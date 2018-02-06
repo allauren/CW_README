@@ -16,6 +16,9 @@
     CYCLE_DELTA: La variation de cycle to die(accelerateur de jeu)
     MEM_SIZE: taille de l arene
     MAX_CHECK: Nombre max de CYCLE_TO_DIE effectues sans cumul des lives > NBR_LIVE
+    CHAMP_MAX_SIZE : taille limite d un champion
+    CYCLE: Definis dans OP.c pour chaque instruction
+    
     Fin du jeu : plus de processus en vie
     Gagnant dernier qui a fait live (avec affichage
     

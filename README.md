@@ -18,7 +18,7 @@
     MAX_CHECK: Nombre max de CYCLE_TO_DIE effectues sans cumul des lives > NBR_LIVE
     CHAMP_MAX_SIZE : taille limite d un champion
     CYCLE: Definis dans OP.c pour chaque instruction
-    
+    REGISTRE: Definis par processus
     Fin du jeu : plus de processus en vie
     Gagnant dernier qui a fait live (avec affichage
     

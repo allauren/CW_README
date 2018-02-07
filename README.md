@@ -33,7 +33,7 @@ Projet de l ecole 42 qui a pour but de faire affronter des programmes .cor dans 
 
    ##### PC :codé sur 2 octets, qui compte le nombre de case entre l'instruction courante, et le point de depart du      processus.Il designe donc la postion de l'instruction courante par rapport au point d'adressage effectif.
    ##### CARRY: Un flag nommé carry, qui vaut 1 si la dernière opération a réussi. Seules certaines opérations vont modifier le carry
- #### Commandes:{1, 2, 3, 4, 5, 6, 7, 8},
+ #### Commandes/instruction possibles:{1, 2, 3, 4, 5, 6, 7, 8},
  ##### 1: description de la commande
  ##### 2: nombre d arguments
  ##### 3: type d arguments(DIR\REG\IND)

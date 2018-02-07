@@ -33,8 +33,20 @@ Projet de l ecole 42 qui a pour but de faire affronter des programmes .cor dans 
 
    ##### PC :codé sur 2 octets, qui compte le nombre de case entre l'instruction courante, et le point de depart du      processus.Il designe donc la postion de l'instruction courante par rapport au point d'adressage effectif.
    ##### CARRY: Un flag nommé carry, qui vaut 1 si la dernière opération a réussi. Seules certaines opérations vont modifier le carry
- 
- ### Champion
+ #### Commandes:{1, 2, 3, 4, 5, 6, 7, 8},
+ ##### 1: description de la commande
+ ##### 2: nombre d arguments
+ ##### 3: type d arguments(DIR\REG\IND)
+ ##### 4: reference de l argument
+ ##### 5: nombre de cycle a attendre avant l execution
+ ##### 6: message affiche
+ ##### 7: modifie le carry
+ ##### 8: taille du direct(4 | 2)
+  ```
+ Exemple :
+ {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+ ```
+### Champion
  
       ```
     les 139 premieres lignes correspondent au header dans le .cor (affichage a regarder).

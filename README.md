@@ -34,6 +34,7 @@ Projet de l ecole 42 qui a pour but de faire affronter des programmes .cor dans 
    ##### CARRY: Un flag nommé carry, qui vaut 1 si la dernière opération a réussi. Seules certaines opérations vont modifier le carry
  
  ### Champion
+ 
       ```
     les 139 premieres lignes correspondent au header dans le .cor (affichage a regarder).
       ```

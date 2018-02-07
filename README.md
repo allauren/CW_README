@@ -42,9 +42,11 @@ Projet de l ecole 42 qui a pour but de faire affronter des programmes .cor dans 
  ##### 6: message affiche
  ##### 7: modifie le carry
  ##### 8: taille du direct(4 | 2)
-  ```
+ 
+ ```
  Exemple :
  {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+ Pour plus de precision, CF sheet cheat presente dans le projet
  ```
 ### Champion
  

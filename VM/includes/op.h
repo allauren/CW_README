@@ -6,11 +6,13 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/08 12:43:51 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/08 17:32:00 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
+#include "../libft/libft_adv.h"
+
 # define OP_H
 # define IND_SIZE				2
 # define REG_SIZE				4
@@ -53,6 +55,7 @@ typedef char			t_arg_type;
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
+# define SIZE_CHAMP			(PROG_NAME_LENGTH + COMMENT_LENGTH)
 
 typedef struct			header_s
 {
@@ -61,14 +64,14 @@ typedef struct			header_s
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }						header_t;
-typedef struct»·»···»···s_map
-{
-	»···char»···»···»···»···map[MEM_SIZE + 1];
-	»···int»»···»···»···»···lives_in_period;
-	»···int»»···»···»···»···last_live_player;
-	»···int»»···»···»···»···cycle;
-	»···int»»···»···»···»···cum_cycle;
-	»···int»»···»···»···»···cycles_to_die,
-		»···
-}»··»···»···»···»···»···t_map;
+
+typedef struct			s_map
+{	
+	char				map[MEM_SIZE + 1];
+	int					lives_in_period;
+	int					last_live_player;
+	int					cycle;
+	int					cum_cycle;
+	int					cycles_to_die;
+}						t_map;
 #endif

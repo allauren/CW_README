@@ -1,8 +1,12 @@
 # COREWAR
-Projet de l'école 42 qui a pour but de faire affronter des programmes .cor dans une machine virtuelle. 
-   Fin de la partie : plus de processus en vie.
-   Le gagnant est le dernier qui a fait live (avec affichage du gagnant).
-   4 champions max, le dernier processus joue en premier sauf indication contraire.
+Projet de l'école 42 qui a pour but de faire affronter des programmes .cor dans une machine virtuelle.
+
+Fin de la partie : plus de processus en vie. 
+
+Le gagnant est le dernier qui a fait live (avec affichage du gagnant). 
+
+4 champions max, le dernier processus joue en premier sauf indication contraire. 
+
 ## 3 Parties:
  ### Executable ASM
  Interprète le code d'un champion en assembleur vers un binaire (fichier .s-> fichier .cor).

@@ -6,7 +6,7 @@
 #    By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:39:52 by gsmith            #+#    #+#              #
-#    Updated: 2018/02/08 16:48:43 by allauren         ###   ########.fr        #
+#    Updated: 2018/02/09 11:38:15 by gsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,20 +20,7 @@ OBJS_PATH = objs
 SRCS_PATH = srcs
 DPDS_PATH = depend
 SRCS = $(addprefix $(SRCS_PATH)/, \
-		path_init.c \
-		path_run.c \
-		path_release.c \
-		path_util.c \
-		alexit.c \
-		ft_trimint.c \
-		lem_in.c \
-		lem_in_util.c \
-		parser.c \
-		parser_util.c \
-		parser_split.c \
-		buf.c \
-		room_maker.c \
-		links_init.c)
+		)
 OBJS = $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
 DPDS = $(SRCS:$(SRCS_PATH)/%.c=$(DPDS_PATH)/%.d)
 ERASE_LINE = '\r\033[K'
@@ -97,4 +84,4 @@ re:
 
 -include $(DPDS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm dclean

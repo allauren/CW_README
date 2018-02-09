@@ -1,0 +1,7 @@
+*.o
+*.o
+*.a
+*.d
+*.dSYM
+*.cor
+corewar

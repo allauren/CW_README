@@ -6,12 +6,12 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/10 18:52:29 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/10 21:50:50 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
-# define OP_H
+#include "libft_adv.h"
 
 # define OP_H
 # define IND_SIZE				2
@@ -65,4 +65,13 @@ typedef struct			header_s
 	char				comment[COMMENT_LENGTH + 1];
 }						header_t;
 
+typedef struct			s_map
+{	
+	char				map[MEM_SIZE + 1];
+	int					lives_in_period;
+	int					last_live_player;
+	int					cycle;
+	int					cum_cycle;
+	int					cycles_to_die;
+}						t_map;
 #endif

@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
+/*   process.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/09 14:20:48 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/10 17:49:22 by allauren         ###   ########.fr       */
+/*   Created: 2018/02/10 14:34:14 by gsmith            #+#    #+#             */
+/*   Updated: 2018/02/10 18:29:11 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VM_H
-# define VM_H
+#ifndef PROCESS_H
+# define PROCESS_H
 # include "libft_adv.h"
 
-typedef struct		s_champ
+typedef struct		s_proc
 {
-	int				id;
-	char			*name;
-	unsigned int	last_live;
-}					t_champ;
+	unsigned char		*reg;
+	int					mem_orig;
+	int					pc;
+	t_bool				carry;
+	unsigned int		sleep;
+	int					lives_cycle;
+	struct s_proc		*next;
+}					t_proc;
 
-typedef struct		s_process
-{
-	unsigned char	*reg;
-	int				pc;
-	t_bool			carry;
-}					t_process;
+t_proc				*proc_new(int mem_orig, int pc);
+t_proc				*proc_dup(t_proc *proc, int mem_orig, int pc);
+void				proc_add(t_proc **proc, t_proc *new_p);
+void				proc_kill(t_proc **proc);
 
-typedef struct		s_vm
-{
-	unsigned char	*memory;
-	t_list			*process;
-	unsigned int	cycle;
-	unsigned int	next_check;
-	unsigned int	last_check;
-	unsigned int	failed_checkr
-}					t_vm;
-
-void				vm_init(t_vm *vm, t_list *champs);
 #endif

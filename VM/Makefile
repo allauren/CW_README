@@ -6,7 +6,7 @@
 #    By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:39:52 by gsmith            #+#    #+#              #
-#    Updated: 2018/02/09 11:38:15 by gsmith           ###   ########.fr        #
+#    Updated: 2018/02/10 18:50:34 by gsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ OBJS_PATH = objs
 SRCS_PATH = srcs
 DPDS_PATH = depend
 SRCS = $(addprefix $(SRCS_PATH)/, \
-		)
+		vm_cycle.c \
+		vm_process.c)
 OBJS = $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
 DPDS = $(SRCS:$(SRCS_PATH)/%.c=$(DPDS_PATH)/%.d)
 ERASE_LINE = '\r\033[K'

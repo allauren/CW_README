@@ -6,15 +6,12 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/10 23:58:32 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/12 17:06:22 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include "op.h"
 # include "display.h"
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
+
 #define BUFF_SIZE 20000
 
 void    print_memory(const void *addr, size_t size);
@@ -38,17 +35,19 @@ void	ft_print_map(unsigned char *map, char *mapp, int start, int size)
 
 int main(int argc, char *argv[])
 {
-	char *line = NULL;
-	int fd = open(argv[1], O_RDONLY);
+//	t_param		p;
+//	t_map		m;
 	int ret;
-	int i;
+	int nb_champ;
 	int buf[BUFF_SIZE];
 	int test;
-	unsigned char	map[MEM_SIZE];
-	char	mapp[MEM_SIZE * 4];
+	unsigned char		map[MEM_SIZE];
+	char				mapp[MEM_SIZE * 4];
+	int fd = open(argv[1], O_RDONLY);
 
-	ft_memset(map, 0, MEM_SIZE);
-	ft_bzero(mapp, MEM_SIZE * 4);
+//	ft_bzero(&p, sizeof(t_param));
+//	ft_bzero(&m, sizeof(t_map);
+//	ft_parse_options(argc, argv, &p, &m);
 	ft_print_map(map, mapp, 0, MEM_SIZE);
 	if (argc == 1)
 		ft_printf("nique toi les arguments\n");

@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/10 21:50:50 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/12 13:15:56 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,4 @@ typedef struct			header_s
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }						header_t;
-
-typedef struct			s_map
-{	
-	char				map[MEM_SIZE + 1];
-	int					lives_in_period;
-	int					last_live_player;
-	int					cycle;
-	int					cum_cycle;
-	int					cycles_to_die;
-}						t_map;
 #endif

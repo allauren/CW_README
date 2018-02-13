@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:34:14 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/13 15:29:51 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/13 17:21:23 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct		s_proc
 	unsigned int		lives_cycle;
 	struct s_proc		*next;
 }					t_proc;
+
+typedef struct			s_funop
+{
+	unsigned char		op_code;
+	void				(*fun)(t_vm *, t_proc *)
+}						t_funop;
 
 t_proc				*proc_new(int mem_orig, int pc);
 t_proc				*proc_dup(t_proc *proc, int mem_orig, int pc);

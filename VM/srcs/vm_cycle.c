@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/13 15:24:02 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/13 16:13:06 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int		cycle_process(t_proc **proc)
 	return (lives);
 }
 
-void			cycle_count(t_vm *vm)
+static void		cycle_count(t_vm *vm)
 {
 	if (vm->cycle == vm->next_check)
 	{
@@ -49,4 +49,9 @@ void			cycle_count(t_vm *vm)
 	if (!(vm->process))
 		vm_itsover(vm, FALSE);
 	vm->cycle += 1;
+}
+
+void			vm_cycle(t_vm *vm)
+{
+	cycle_count(vm);
 }

@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:20:48 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/13 15:40:14 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/13 17:17:58 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct		s_champ
 
 typedef		struct	s_vm
 {
-	unsigned char		*memory;
+	unsigned char		memory[MEM_SIZE];
 	t_champ				*champs;
 	t_proc				*process;
 	int					nb_champ;

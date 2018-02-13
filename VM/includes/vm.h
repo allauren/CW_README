@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:20:48 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/12 14:15:16 by tcassier         ###   ########.fr       */
+/*   Updated: 2018/02/13 15:40:14 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 # include "libft_adv.h"
 # include "process.h"
 
-typedef structs_champ
+typedef struct		s_champ
 {
-	int				id;
-	int				mem_orig;
+	unsigned int	id;
 	char			*name;
 	char			*cor_file;
 	unsigned int	last_live;
-}t_champ;
+}					t_champ;
 
 typedef		struct	s_vm
 {

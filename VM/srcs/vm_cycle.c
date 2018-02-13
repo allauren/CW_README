@@ -6,27 +6,30 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/10 18:02:14 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/13 15:24:02 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 #include "vm.h"
 
-static int		cycle_process(t_list **proc)
+static int		cycle_process(t_proc **proc)
 {
 	int			lives;
+	t_proc		**cursor;
 
-	if (!lst_proc)
-		return (0);
-	if (!(proc->lives_cycle))
-	{
-		proc_kill(proc);
-		return (cycle_process(proc));
-	}
-	lives = proc->lives_cycle;
-	proc->lives_cycle = 0;
-	return (lives + cycle_process(&(proc->next)));
+	lives = 0;
+	cursor = proc;
+	while (*cursor)
+		if (!((*cursor)->lives_cycle))
+			proc_kill(cursor);
+		else
+		{
+			lives += proc->lives_cycle;
+			(*cursor)->lives_cycle = 0;
+			cursor = &((*cursor)->next);
+		}
+	return (lives);
 }
 
 void			cycle_count(t_vm *vm)

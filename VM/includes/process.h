@@ -6,22 +6,22 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:34:14 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/10 18:29:11 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/13 15:09:20 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROCESS_H
 # define PROCESS_H
 # include "libft_adv.h"
+# include "op.h"
 
 typedef struct		s_proc
 {
-	unsigned char		*reg;
-	int					mem_orig;
-	int					pc;
+	unsigned int		reg[REG_NUMBER];
+	unsigned int		pc;
 	t_bool				carry;
 	unsigned int		sleep;
-	int					lives_cycle;
+	unsigned int		lives_cycle;
 	struct s_proc		*next;
 }					t_proc;
 

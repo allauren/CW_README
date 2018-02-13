@@ -6,21 +6,20 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 18:03:20 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/08 18:13:33 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/10 23:53:28 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <unistd.h>
 #include "../includes/op.h"
-
 void    ft_printhex(int n)
 {
 	int c;
 
-	if (n >= 16)
+	if (n >=		 16)
 		ft_printhex(n / 16);
-	c = n % 16 + (n % 16 < 10 ? '0' : 'a' - 10);
+	c = n % 16 + (n % 16 < 10 ? '0' : 'a' -			10);
 	ft_putchar(c);
 }
 
@@ -32,7 +31,7 @@ void    ft_printchars(unsigned char c)
 void    print_memory(const void *addr, size_t size)
 {
 	unsigned char *t = (unsigned char *)addr;
-	size_t        i = 0;
+	size_t				  i = 0;
 	int            col;
 
 	while (i < size)
@@ -55,4 +54,4 @@ void    print_memory(const void *addr, size_t size)
 		ft_printf("je suis la valeur au saut de ligne%d", i);
 		ft_putchar('\n');
 	}
-}
+}			

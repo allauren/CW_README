@@ -6,12 +6,12 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/10 18:52:29 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/12 17:07:54 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
-# define OP_H
+#include "libft_adv.h"
 
 # define OP_H
 # define IND_SIZE				2
@@ -64,5 +64,4 @@ typedef struct			header_s
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }						header_t;
-
 #endif

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/12 17:08:07 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:50:28 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sys/uio.h>
 #include <unistd.h>
 #include "libft_adv.h"
+#include "op.h"
 
 typedef struct			s_map
 {	
@@ -30,20 +31,34 @@ typedef struct			s_map
 	int					cycles_to_die;
 }						t_map;
 
-typedef struct			s_option
+typedef struct			s_options
 {
 	int		visu;
 	int		param;
-}						t_option;
+}						t_options;
 
 typedef struct			s_param
 {
 	int fd[4];
 	int ret;
 	int nb_champ;
-	int buf[BUFF_SIZE];
+	unsigned char buf[200000];
 	int test;
-	t_option	opt;
+	t_options	opt;
 }						t_param;
 
+/*
+ * Utils to display
+ */
+void	ft_fill_map(unsigned char *map, unsigned char *buf, int start, int stop);
+void    print_memory(const void *addr, size_t size);
+/*
+ * Parsing functions
+ */
+void		ft_parse_options(int argc,char **argv,t_param *p, t_map *m);
+void	ft_set_fd(char *str, t_param *p, t_options *s);
+void	ft_set_option(char *str, t_param *p, t_options *s);
+void	ft_set_optionparam(char *str, t_param *p, t_options *s);
+void	ft_error(char *str, t_param *p, t_options *s);
+void	ft_set_map(t_map *m, t_param *p);
 #endif

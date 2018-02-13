@@ -1,17 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_options.c                                    :+:      :+:    :+:   */
+/*   parser_fill_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 13:19:40 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/07 13:21:52 by allauren         ###   ########.fr       */
+/*   Created: 2018/02/13 14:20:12 by allauren          #+#    #+#             */
+/*   Updated: 2018/02/13 14:58:01 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "display.h"
 
-void	ft_usage(void)
+void	ft_fill_map(unsigned char *map, unsigned char *buf, int start, int stop)
 {
-	ft_printf("Usage : ./corewar <champion.cor> <...>\n");
+	int		i;
+	int		z;
+
+	i = start;
+	z = -1;
+	while (++z < stop)
+		map[i++] = buf[z];
 }

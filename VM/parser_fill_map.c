@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser_fill_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/07 13:23:28 by allauren         ###   ########.fr       */
+/*   Created: 2018/02/13 14:20:12 by allauren          #+#    #+#             */
+/*   Updated: 2018/02/13 16:50:27 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char *argv[])
+#include "display.h"
+
+void	ft_fill_map(unsigned char *map, unsigned char *buf, int start, int stop)
 {
-	if (argc == 1)
-		ft_usage();
-	return 0;
+	int		i;
+	int		z;
+
+	i = start;
+	z = -1;
+	while (++z < stop)
+		map[i++] = buf[z];
 }

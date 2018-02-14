@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   funop_3.c                                          :+:      :+:    :+:   */
+/*   op_1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/14 13:21:58 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/14 16:49:40 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "funop.h"
+#include "vm.h"
 
-void					op_zjmp(t_vm *vm, t_proc *proc)
+void					op_live(t_vm *vm, t_proc *proc)
 {
 	return ;
 }
 
-void					op_ldi(t_vm *vm, t_proc *proc)
+void					op_ld(t_vm *vm, t_proc *proc)
 {
 	return ;
 }
 
-void					op_sti(t_vm *vm, t_proc *proc)
+void					op_st(t_vm *vm, t_proc *proc)
 {
 	return ;
 }
 
-void					op_fork(t_vm *vm, t_proc *proc)
+void					op_add(t_vm *vm, t_proc *proc)
 {
 	return ;
 }

@@ -6,14 +6,14 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/13 16:13:06 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/14 17:42:38 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 #include "vm.h"
 
-static int		cycle_process(t_proc **proc)
+static int		process_check(t_proc **proc)
 {
 	int			lives;
 	t_proc		**cursor;
@@ -36,7 +36,7 @@ static void		cycle_count(t_vm *vm)
 {
 	if (vm->cycle == vm->next_check)
 	{
-		if (cycle_process(&(vm->process)) > NBR_LIVE && !(vm->failed_check = 0))
+		if (process_check(&(vm->process)) > NBR_LIVE && !(vm->failed_check = 0))
 			vm->to_die -= CYCLE_DELTA;
 		else
 		{
@@ -53,5 +53,29 @@ static void		cycle_count(t_vm *vm)
 
 void			vm_cycle(t_vm *vm)
 {
+	t_proc		*cursor;
+	int			i;
+
+	cursor = vm->proc;
+	while (cursor)
+	{
+		if (cursor->sleep <= 0)
+		{
+			i = 0;
+			while (g_op_tab[i].op_code
+					&& g_op_tab[i].op_code != vm->memory[cursor->pc])
+				i++;
+			if (g_op_tab[i].op_code)
+			{
+				if (cursor->sleep < 0 || !((cursor->sleep)--))
+					cursor->sleep = g_op_tab[i].sleep;
+				else
+					g_op_tab[i].fun(vm, cursor);
+			}
+		}
+		else
+			(cursor->sleep)--;
+		cursor = cursor->next;
+	}
 	cycle_count(vm);
 }

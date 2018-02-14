@@ -6,13 +6,14 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:20:48 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/14 12:30:11 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/14 17:02:24 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
 # include "libft_adv.h"
+# include "op.h"
 # include "process.h"
 
 typedef struct		s_champ

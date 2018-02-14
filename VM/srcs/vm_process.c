@@ -6,12 +6,11 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:56:59 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/13 15:14:11 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/14 17:00:33 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "process.h"
-#include "op.h"
 
 t_proc				*proc_new(unsigned int pc)
 {

@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:20:48 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/13 17:17:58 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/14 12:30:11 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ typedef		struct	s_vm
 	unsigned int		failed_check;
 }					t_vm;
 
-void	vm_init(t_vm *vm, int argc, char *argv[]);
-t_bool	vm_write_champ(t_vm *vm, t_champ *champ);
-void	vm_cycle(t_vm *vm);
-void	vm_itsover(t_vm *vm, t_bool error);
+void				vm_init(t_vm *vm, int argc, char *argv[]);
+t_bool				vm_write_champ(t_vm *vm, t_champ *champ);
+void				vm_cycle(t_vm *vm);
+void				vm_itsover(t_vm *vm, t_bool error);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_process.c                                       :+:      :+:    :+:   */
+/*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:56:59 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/14 17:00:33 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/15 16:18:11 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_proc				*proc_dup(t_proc *proc, unsigned int pc)
 	{
 		new->carry = proc->carry;
 		ft_memcpy((void *)(new->reg), (void *)(proc->reg),
-				sizeof(unsigned int) *REG_NUMBER);
+				sizeof(unsigned int) * REG_NUMBER);
 	}
 	return (new);
 }
@@ -57,4 +57,23 @@ void				proc_kill(t_proc **proc)
 		free(*proc);
 		*proc = tmp;
 	}
+}
+
+int					proc_alive(t_proc **proc)
+{
+	int			lives;
+	t_proc		**cursor;
+
+	lives = 0;
+	cursor = proc;
+	while (*cursor)
+		if (!((*cursor)->lives))
+			proc_kill(cursor);
+		else
+		{
+			lives += proc->lives;
+			(*cursor)->lives = 0;
+			cursor = &((*cursor)->next);
+		}
+	return (lives);
 }

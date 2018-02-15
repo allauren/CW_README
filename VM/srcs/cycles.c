@@ -1,55 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_cycle.c                                         :+:      :+:    :+:   */
+/*   cycles.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/14 17:42:38 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/15 16:18:22 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
-#include "vm.h"
+#include "cycles.h"
+#include "process.h"
 
-static int		process_check(t_proc **proc)
+t_timer			cycle_init(void)
 {
-	int			lives;
-	t_proc		**cursor;
+	t_timer		res;
 
-	lives = 0;
-	cursor = proc;
-	while (*cursor)
-		if (!((*cursor)->lives_cycle))
-			proc_kill(cursor);
-		else
-		{
-			lives += proc->lives_cycle;
-			(*cursor)->lives_cycle = 0;
-			cursor = &((*cursor)->next);
-		}
-	return (lives);
+	res.cycle = 1;
+	res.next_check = CYCLE_TO_DIE;
+	res.to_die = CYCLE_TO_DIE;
+	res.fail_check = 0;
+	return (res);
 }
 
-static void		cycle_count(t_vm *vm)
+t_bool			cycle_count(t_timer *timer, t_proc **proc)
 {
-	if (vm->cycle == vm->next_check)
+	if (timer->cycle == timer->next_check)
 	{
-		if (process_check(&(vm->process)) > NBR_LIVE && !(vm->failed_check = 0))
-			vm->to_die -= CYCLE_DELTA;
+		if (proc_alive(proc) > NBR_LIVE && !(timer->fail_check = 0))
+			timer->to_die -= CYCLE_DELTA;
 		else
 		{
-			vm->failed_check += 1;
-			if (vm->failed_check == MAX_CHECKS && !(vm->failed_check = 0))
-				vm->to_die -= CYCLE_DELTA;
+			timer->fail_check += 1;
+			if (timer->fail_check == MAX_CHECKS && !(timer->fail_check = 0))
+				timer->to_die -= CYCLE_DELTA;
 		}
-		vm->next_check += vm->to_die;
+		timer->next_check += timer->to_die;
 	}
-	if (!(vm->process))
-		vm_itsover(vm, FALSE);
 	vm->cycle += 1;
+	return (proc == NULL);
 }
+
+/*
+** |
+** | code to be moved in another file
+** V
+*/
 
 void			vm_cycle(t_vm *vm)
 {

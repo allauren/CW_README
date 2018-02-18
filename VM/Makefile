@@ -6,11 +6,11 @@
 #    By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:39:52 by gsmith            #+#    #+#              #
-#    Updated: 2018/02/10 18:50:34 by gsmith           ###   ########.fr        #
+#    Updated: 2018/02/18 11:59:36 by gsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = lem-in
+NAME = corewar
 CC = clang
 FLAG = -Wall -Wextra -Werror -g3
 LIBFT = ft

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_fill_memory.c                                  :+:      :+:    :+:   */
+/*   parse_sort_champ.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/13 14:20:12 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/17 22:53:33 by allauren         ###   ########.fr       */
+/*   Created: 2018/02/16 18:03:25 by allauren          #+#    #+#             */
+/*   Updated: 2018/02/16 18:29:39 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory.h"
-
-void	ft_fill_memory(unsigned char *memory, unsigned char *buf, int start, int stop)
+void		ft_sort_champ(t_param *p)
 {
+	t_chmp	new[4];
 	int		i;
-	int		z;
 
-	i = start;
-	z = -1;
-	while (++z < stop)
-		memory[i++] = buf[z];
+	i = 0;
+	while(i < p->nb_champ)
+	{
+		new[i] = 
+	
+	}
+
 }

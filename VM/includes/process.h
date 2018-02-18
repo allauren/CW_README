@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:34:14 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/15 16:02:12 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/17 22:06:55 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PROCESS_H
 # include "libft_adv.h"
 # include "op.h"
+# define REG_NUMBER 16
 
 typedef struct		s_proc
 {

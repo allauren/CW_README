@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_fill_memory.c                                  :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/13 14:20:12 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/17 22:53:33 by allauren         ###   ########.fr       */
+/*   Created: 2018/02/17 22:14:57 by allauren          #+#    #+#             */
+/*   Updated: 2018/02/17 22:51:46 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 
-void	ft_fill_memory(unsigned char *memory, unsigned char *buf, int start, int stop)
+void		ft_isactive(int i, int *j, int value)
 {
-	int		i;
-	int		z;
-
-	i = start;
-	z = -1;
-	while (++z < stop)
-		memory[i++] = buf[z];
+	if (i)
+		ft_perror("invalid parameter\n");
+	else 
+		*j = value;
 }

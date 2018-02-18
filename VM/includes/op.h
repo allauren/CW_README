@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/15 20:00:38 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/18 15:54:03 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,26 @@
 # define DIR_CODE				2
 # define IND_CODE				3
 
-# define MAX_ARGS_NUMBER			4
-# define MAX_PLAYERS				4
+# define MAX_ARGS_NUMBER		4
+# define MAX_PLAYERS			4
 # define MEM_SIZE				(4*1024)
-# define IDX_MOD					(MEM_SIZE / 8)
+# define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 
 # define COMMENT_CHAR			'#'
 # define LABEL_CHAR				':'
-# define DIRECT_CHAR				'%'
+# define DIRECT_CHAR			'%'
 # define SEPARATOR_CHAR			','
 
-# define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
+# define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-# define NAME_CMD_STRING			".name"
+# define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"
 
 # define REG_NUMBER				16
 
 # define CYCLE_TO_DIE			1536
-# define CYCLE_DELTA				50
+# define CYCLE_DELTA			50
 # define NBR_LIVE				21
 # define MAX_CHECKS				10
 
@@ -55,7 +55,7 @@ typedef char			t_arg_type;
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
-# define SIZE_CHAMP			(PROG_NAME_LENGTH + COMMENT_LENGTH)
+# define SIZE_CHAMP				(PROG_NAME_LENGTH + COMMENT_LENGTH)
 
 typedef struct			header_s
 {
@@ -64,36 +64,5 @@ typedef struct			header_s
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }						header_t;
-/*
-typedef struct			s_op
-{
-	char				*name;
-	int					nb_arg;
-	int					*args;
-	unsigned char		op_code;
-	int					sleep;
-	char				*desc;
-	t_bool				carry;
-	t_bool				size_dir;
-	void				(*fun)(t_vm *, t_proc *)
-}						t_op;
-extern t_op			g_op_tab[17];
 
-void					op_live(t_vm *vm, t_proc *proc);
-void					op_ld(t_vm *vm, t_proc *proc);
-void					op_st(t_vm *vm, t_proc *proc);
-void					op_add(t_vm *vm, t_proc *proc);
-void					op_sub(t_vm *vm, t_proc *proc);
-void					op_and(t_vm *vm, t_proc *proc);
-void					op_or(t_vm *vm, t_proc *proc);
-void					op_xor(t_vm *vm, t_proc *proc);
-void					op_zjmp(t_vm *vm, t_proc *proc);
-void					op_ldi(t_vm *vm, t_proc *proc);
-void					op_sti(t_vm *vm, t_proc *proc);
-void					op_fork(t_vm *vm, t_proc *proc);
-void					op_lld(t_vm *vm, t_proc *proc);
-void					op_lldi(t_vm *vm, t_proc *proc);
-void					op_lfork(t_vm *vm, t_proc *proc);
-void					op_aff(t_vm *vm, t_proc *proc);
-*/
 #endif

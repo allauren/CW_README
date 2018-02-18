@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/14 16:47:06 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/15 20:00:38 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct			header_s
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }						header_t;
-
+/*
 typedef struct			s_op
 {
 	char				*name;
@@ -77,7 +77,6 @@ typedef struct			s_op
 	t_bool				size_dir;
 	void				(*fun)(t_vm *, t_proc *)
 }						t_op;
-
 extern t_op			g_op_tab[17];
 
 void					op_live(t_vm *vm, t_proc *proc);
@@ -96,5 +95,5 @@ void					op_lld(t_vm *vm, t_proc *proc);
 void					op_lldi(t_vm *vm, t_proc *proc);
 void					op_lfork(t_vm *vm, t_proc *proc);
 void					op_aff(t_vm *vm, t_proc *proc);
-
+*/
 #endif

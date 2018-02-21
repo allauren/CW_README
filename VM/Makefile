@@ -6,7 +6,7 @@
 #    By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:39:52 by gsmith            #+#    #+#              #
-#    Updated: 2018/02/18 17:05:16 by gsmith           ###   ########.fr        #
+#    Updated: 2018/02/21 17:11:27 by gsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,17 @@ DPDS_PATH = depend
 INCL = -I $(HEADER_PATH) -I $(LIBFT_DIR)
 CFLAGS = -Wall -Wextra -Werror -g3 $(INCL)
 SRCS = $(addprefix $(SRCS_PATH)/, \
+		main.c \
+		parse_options.c \
+		vm.c \
 		cycle.c \
-		process.c)
+		process.c \
+		op.c \
+		op_1.c \
+		op_2.c \
+		op_3.c \
+		op_4.c \
+		op_utils.c)
 OBJS = $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
 DPDS = $(SRCS:$(SRCS_PATH)/%.c=$(DPDS_PATH)/%.d)
 ERASE_LINE = '\r\033[K'

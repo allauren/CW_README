@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.h                                          :+:      :+:    :+:   */
+/*   memory.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/18 17:52:09 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/21 17:30:24 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # include <unistd.h>
 # include "libft_adv.h"
 # include "vm.h"
+
+typedef struct			s_chmp
+{
+	int					fd;
+	char				*name;
+	unsigned int		num_player;
+	unsigned int		last_live;
+}						t_chmp;
 
 typedef struct			s_memory
 {	
@@ -34,14 +42,6 @@ typedef struct			s_options
 	int		param;
 	int		sp;
 }						t_options;
-
-typedef struct			s_chmp
-{
-	int					fd;
-	char				*name;
-	unsigned int		num_player;
-	unsigned int		last_live;
-}						t_chmp;
 
 typedef struct			s_param
 {

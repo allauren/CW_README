@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/18 17:11:08 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/21 14:06:05 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,38 +41,4 @@ t_bool			cycle_count(t_timer *timer, t_proc **proc)
 	}
 	vm->cycle += 1;
 	return (proc == NULL);
-}
-
-/*
-** |
-** | code to be moved in another file
-** V
-*/
-
-void			vm_cycle(t_memory *mem, t_proc **proc, t_timer *timer)
-{
-	t_proc		*cursor;
-	int			i;
-
-	cursor = *proc;
-	while (cursor)
-	{
-		if (cursor->sleep <= 0)
-		{
-			i = 0;
-			while (g_op_tab[i].opc && g_op_tab[i].opc != mem.memory[cursor->pc])
-				i++;
-			if (g_op_tab[i].opc)
-			{
-				if (cursor->sleep < 0 || !((cursor->sleep)--))
-					cursor->sleep = g_op_tab[i].sleep;
-				else
-					g_op_tab[i].fun(mem, cursor, proc, timer);
-			}
-		}
-		else
-			(cursor->sleep)--;
-		cursor = cursor->next;
-	}
-	cycle_count(timer, proc);
 }

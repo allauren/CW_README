@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cycles.h                                           :+:      :+:    :+:   */
+/*   op_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 15:25:53 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/21 13:10:00 by gsmith           ###   ########.fr       */
+/*   Created: 2018/02/21 16:45:56 by gsmith            #+#    #+#             */
+/*   Updated: 2018/02/21 18:07:17 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CYCLES_H
-# define CYCLES_H
-# include "libft_adv.h"
+#include "memory.h"
+#include "process.h"
 
-typedef struct		s_timer
+int			read_mem(t_memory *mem, t_proc *proc, int size)
 {
-	unsigned int		cycle;
-	unsigned int		next_check;
-	unsigned int		to_die;
-	unsigned int		fail_check;
-}					t_timer;
+	unsigned char	op;
+	int				res;
+	int				i;
 
-t_timer				cycle_init(void);
-t_bool				cycle_count(t_timer *timer);
-
-#endif
+	op = (mem->memory) + proc->pc;
+	(proc->pc) += size;
+	res = 0;
+	i = -1;
+	while (++i < size)
+		res = res << 8 + (int)(op[i]);
+	return (res);
+}

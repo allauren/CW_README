@@ -6,15 +6,17 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:19:40 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/17 22:56:14 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/21 14:51:58 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 
-void	ft_usage(void)
+void	corewar_usage(void)
 {
-	ft_printf("Usage : ./corewar <champion.cor> <...>\n");
+	ft_printf("usage: ./corewar [-dump nbr_cycles]
+			<[-n number] champion.cor> ...\n");
+	exit(1);
 }
 
 int		ft_iscor(char *str)
@@ -41,7 +43,13 @@ static int		ft_select_option(char **argv, int argc, t_param *p)
 
 void		ft_parse_options(int argc,char **argv,t_param *p, t_memory *m)
 {
-	static void (*tab[4])(char*, t_param*, t_options*) = {ft_error, ft_set_fd, ft_set_optionparam, ft_set_option};
+	static void (*tab[4])(char*, t_param*, t_options*) =
+	{
+		ft_error,
+		ft_set_fd,
+		ft_set_optionparam,
+		ft_set_option
+	};
 
 	while(argc-- > 1)
 		tab[ft_select_option(argv, argc, p)](argv[argc], p, &p->opt);

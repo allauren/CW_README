@@ -6,29 +6,26 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/17 22:51:58 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/18 17:52:09 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MEMORY_H
 # define MEMORY_H
-#define HEX "0123456789abcdef"
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include "libft_adv.h"
-#include "op.h"
+# define HEX "0123456789abcdef"
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include "libft_adv.h"
+# include "vm.h"
 
 typedef struct			s_memory
 {	
 	unsigned char		memory[MEM_SIZE];
 	char				memoryp[MEM_SIZE * 4];
+	t_chmp				chp[4];
 	int					nb_champ;
-	unsigned int		cycle;
-	unsigned int		next_check;
-	unsigned int		to_die;
-	unsigned int		failed_check;
 }						t_memory;
 
 typedef struct			s_options
@@ -41,12 +38,14 @@ typedef struct			s_options
 typedef struct			s_chmp
 {
 	int					fd;
+	char				*name;
 	unsigned int		num_player;
+	unsigned int		last_live;
 }						t_chmp;
 
 typedef struct			s_param
 {
-	t_chmp			nchamp[4];
+	t_memory		mem[4];
 	int				fd[4];
 	int				ret;
 	int				nb_champ;
@@ -64,7 +63,7 @@ void		print_memory(const void *addr, size_t size);
 /*
  * Parsing functions
  */
-void		ft_parse_options(int argc,char **argv,t_param *p, t_memory *m);
+void		ft_parse_options(int argc, char **argv,t_param *p, t_memory *m);
 void		ft_set_fd(char *str, t_param *p, t_options *s);
 void		ft_set_option(char *str, t_param *p, t_options *s);
 void		ft_set_optionparam(char *str, t_param *p, t_options *s);

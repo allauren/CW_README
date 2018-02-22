@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_utils.c                                         :+:      :+:    :+:   */
+/*   op_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/21 16:45:56 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/22 12:05:10 by gsmith           ###   ########.fr       */
+/*   Created: 2018/02/22 12:02:38 by gsmith            #+#    #+#             */
+/*   Updated: 2018/02/22 12:04:31 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op_utils.h"
+#ifndef OP_UTILS_H
+# define OP_UTILS_H
 
-int			read_mem(t_memory *mem, t_proc *proc, int size)
-{
-	int				res;
+#include "memory.h"
+#include "process.h"
 
-	res = 0;
-	while (size > 0)
-	{
-		res = res << 8 + (int)((mem->memory)[proc->pc]);
-		(proc->pc)++;
-		size--;
-	}
-	return (res);
-}
+int			read_mem(t_memory *mem, t_proc *proc, int size);
+
+#endif

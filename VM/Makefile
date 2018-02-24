@@ -6,22 +6,33 @@
 #    By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:39:52 by gsmith            #+#    #+#              #
-#    Updated: 2018/02/18 11:59:36 by gsmith           ###   ########.fr        #
+#    Updated: 2018/02/21 17:11:27 by gsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = corewar
 CC = clang
-FLAG = -Wall -Wextra -Werror -g3
 LIBFT = ft
+LIBFT_NAME = $(LIBFT_DIR)libft.a
 LIBFT_DIR = libft/
 HEADER_PATH = includes
 OBJS_PATH = objs
 SRCS_PATH = srcs
 DPDS_PATH = depend
+INCL = -I $(HEADER_PATH) -I $(LIBFT_DIR)
+CFLAGS = -Wall -Wextra -Werror -g3 $(INCL)
 SRCS = $(addprefix $(SRCS_PATH)/, \
-		vm_cycle.c \
-		vm_process.c)
+		main.c \
+		parse_options.c \
+		vm.c \
+		cycle.c \
+		process.c \
+		op.c \
+		op_1.c \
+		op_2.c \
+		op_3.c \
+		op_4.c \
+		op_utils.c)
 OBJS = $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
 DPDS = $(SRCS:$(SRCS_PATH)/%.c=$(DPDS_PATH)/%.d)
 ERASE_LINE = '\r\033[K'
@@ -36,24 +47,23 @@ YELLOW = '\033[1;33m'
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(LIBFT_NAME) $(OBJS)
 	@printf $(NC)"[$(NAME)] "$(YELLOW)"Compiling .o files done.\n"$(NC)
-	@make -C $(LIBFT_DIR)
 	@printf $(NC)"[$(NAME)] "$(LBLUE)
-	$(CC) $(FLAG) -I $(HEADER_PATH) -I $(LIBFT_DIR) -o $(NAME) $(OBJS) \
-		-L./$(LIBFT_DIR) -l$(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./$(LIBFT_DIR) -l$(LIBFT)
 	@printf $(NC)"[$(NAME)] "$(LGREEN)"$(NAME) ready.\n"$(NC)
+
+$(LIBFT_NAME):
+	@make -C $(LIBFT_DIR)
 
 $(OBJS_PATH)/%.o:
 	@printf "[$(NAME)] "$(LBLUE)
-	$(CC) $(FLAG) -I $(HEADER_PATH) -I $(LIBFT_DIR) -o $@ \
-		-c $(@:$(OBJS_PATH)/%.o=$(SRCS_PATH)/%.c)
+	$(CC) $(CFLAGS) -o $@ -c $(@:$(OBJS_PATH)/%.o=$(SRCS_PATH)/%.c)
 	@printf $(NC)
 
 $(DPDS_PATH)/%.d: $(SRCS_PATH)/%.c
 	@printf $(NC)"[$(NAME)] "$(LBLUE)
-	$(CC) $(CFLAGS) -I $(HEADER_PATH) -I $(LIBFT_DIR) -MM $^ \
-		| sed -e '1s/^/$(OBJS_PATH)\//' > $@
+	$(CC) $(CFLAGS) -MM $^ | sed -e '1s/^/$(OBJS_PATH)\//' > $@
 	@printf $(NC)"[$(NAME)] "$(YELLOW)"$@ created/updated.\n"$(NC)
 
 clean:
@@ -80,8 +90,8 @@ norm:
 	norminette $(SRCS_PATH) $(HEADER_PATH)
 
 re:
-	$(MAKE) fclean
-	$(MAKE) all
+	@$(MAKE) fclean
+	@$(MAKE) all
 
 -include $(DPDS)
 

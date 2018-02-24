@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_2.c                                             :+:      :+:    :+:   */
+/*   op_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/18 17:59:18 by gsmith           ###   ########.fr       */
+/*   Created: 2018/02/22 12:02:38 by gsmith            #+#    #+#             */
+/*   Updated: 2018/02/22 16:30:45 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
+#ifndef OP_UTILS_H
+# define OP_UTILS_H
 
-void	op_sub(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
-{
-	return ;
-}
+# include "memory.h"
 
-void	op_and(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
-{
-	return ;
-}
+# define ARG(opc, pos) ((opc & (3 << (pos * 2))) >> (pos * 2))
+# define A_REG 1
+# define A_DIR 2
+# define A_IND 3
 
-void	op_or(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
-{
-	return ;
-}
+int			read_mem(t_memory *mem, int ind, int size);
 
-void	op_xor(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
-{
-	return ;
-}
+#endif

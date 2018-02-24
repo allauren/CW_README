@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:20:48 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/18 10:39:54 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/18 17:49:35 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct		s_champ
 	unsigned int	last_live;
 }					t_champ;
 
-typedef		struct	s_vm
+typedef struct		s_vm
 {
 	unsigned char		memory[MEM_SIZE];
 	t_champ				*champs;

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/21 17:30:24 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/24 16:51:00 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct			s_chmp
 }						t_chmp;
 
 typedef struct			s_memory
-{	
+{
 	unsigned char		memory[MEM_SIZE];
 	char				memoryp[MEM_SIZE * 4];
 	t_chmp				chp[4];
@@ -56,18 +56,20 @@ typedef struct			s_param
 }						t_param;
 
 /*
- * Utils to display
- */
-void		ft_fill_memory(unsigned char *me, unsigned char *b, int strt, int stop);
-void		print_memory(const void *addr, size_t size);
+** Utils to display
+*/
+void					ft_fill_memory(unsigned char *me,
+		unsigned char *b, int strt, int stop);
+void					print_memory(const void *addr, size_t size);
 /*
- * Parsing functions
- */
-void		ft_parse_options(int argc, char **argv,t_param *p, t_memory *m);
-void		ft_set_fd(char *str, t_param *p, t_options *s);
-void		ft_set_option(char *str, t_param *p, t_options *s);
-void		ft_set_optionparam(char *str, t_param *p, t_options *s);
-void		ft_error(char *str, t_param *p, t_options *s);
-void		ft_set_memory(t_memory *m, t_param *p);
-void		ft_isactive(int i, int *j, int value);
+** Parsing functions
+*/
+void					ft_parse_options(int argc,
+		char **argv, t_param *p, t_memory *m);
+void					ft_set_fd(char *str, t_param *p, t_options *s);
+void					ft_set_option(char *str, t_param *p, t_options *s);
+void					ft_set_optionparam(char *str, t_param *p, t_options *s);
+void					ft_error(char *str, t_param *p, t_options *s);
+void					ft_set_memory(t_memory *m, t_param *p);
+void					ft_isactive(int i, int *j, int value);
 #endif

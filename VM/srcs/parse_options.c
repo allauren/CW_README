@@ -6,16 +6,17 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:19:40 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/21 14:51:58 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/24 16:43:12 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
+#include <stdlib.h>
 
 void	corewar_usage(void)
 {
-	ft_printf("usage: ./corewar [-dump nbr_cycles]
-			<[-n number] champion.cor> ...\n");
+	ft_putendl("usage: ./corewar [-dump nbr_cycles] \
+			<[-n number] champion.cor> ...");
 	exit(1);
 }
 

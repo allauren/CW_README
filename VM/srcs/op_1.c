@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/24 16:33:26 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/24 16:46:03 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	op_ld(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 		if (ARG(opc, 3) == A_DIR)
 			val = read_mem(mem, proc->pc + 2, 4);
 		else
-			val = read_mem(mem, proc->pc + read_mem(mem, proc-pc + 2, 2), 4);
+			val = read_mem(mem, proc->pc + read_mem(mem, proc->pc + 2, 2), 4);
 		rg = read_mem(mem, proc->pc + 2 + (ARG(opc, 3) == A_DIR ? 4 : 2), 1);
 		if (rg < REG_NUMBER && rg >= 0)
 		{

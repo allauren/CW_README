@@ -6,13 +6,13 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 13:58:12 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/21 14:09:35 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/24 16:39:09 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 #include "process.h"
-#include "cycle.h"
+#include "cycles.h"
 
 t_bool			vm_run(t_memory *mem, t_proc **proc, t_timer *timer)
 {

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:19:40 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/17 22:56:14 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/18 16:18:48 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void		ft_parse_options(int argc,char **argv,t_param *p, t_memory *m)
 		tab[ft_select_option(argv, argc, p)](argv[argc], p, &p->opt);
 	if (argc < 1 && p->nb_champ == 0)
 		ft_perror("no champion\n");
+	ft_printf("coucou ici");
 	ft_set_memory(m, p);
 }

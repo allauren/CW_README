@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 15:16:51 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/17 22:55:04 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/18 16:21:41 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_set_fd(char *str, t_param *p, t_options *s)
 {
 
-	ft_printf("coucou\n");
 	(void)s;
 	if (p->nb_champ < 4)
 	{

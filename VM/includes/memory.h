@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/24 16:51:00 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/24 18:09:41 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct			s_options
 
 typedef struct			s_param
 {
+	t_chmp			nchamp[4];
 	t_memory		mem[4];
 	int				fd[4];
 	int				ret;
@@ -72,4 +73,5 @@ void					ft_set_optionparam(char *str, t_param *p, t_options *s);
 void					ft_error(char *str, t_param *p, t_options *s);
 void					ft_set_memory(t_memory *m, t_param *p);
 void					ft_isactive(int i, int *j, int value);
+void	corewar_usage(void);
 #endif

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 15:16:51 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/18 16:21:41 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/25 16:34:46 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_set_fd(char *str, t_param *p, t_options *s)
 {
-
+	ft_printf("je passe ici et je met le fd\n");
 	(void)s;
 	if (p->nb_champ < 4)
 	{
@@ -27,8 +27,9 @@ void	ft_set_fd(char *str, t_param *p, t_options *s)
 
 void	ft_set_option(char *str, t_param *p, t_options *s)
 {
-	int		param;
+	static int		param;
 
+	ft_printf("je passe ici et je met option\n");
 	if (ft_strequ("-n", str) && (param = 1))
 		ft_isactive(p->opt.sp, &p->opt.sp, 1);
 	if (param)
@@ -40,9 +41,12 @@ void	ft_set_optionparam(char *str, t_param *p, t_options *s)
 {
 	char		*tmp;
 
+	ft_printf("je passe ici et je met le param\n");
 	if (!p->param && p->opt.sp)
 	{
 		p->param = 1;
+		p->opt.param = 0;
+		p->opt.sp = 0;
 		if ((tmp = ft_trim_int(str)))
 			if (ft_atoi(tmp) >= 0)
 				p->nchamp[p->nb_champ].num_player = ft_atoi(tmp);
@@ -61,6 +65,6 @@ void	ft_error(char *str, t_param *p, t_options *s)
 	(void)str;
 	(void)p;
 	(void)s;
-	ft_perror("invalid param\n");
+	ft_perror("error param\n");
 }
 

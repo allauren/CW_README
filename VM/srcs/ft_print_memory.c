@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 18:03:20 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/10 23:53:28 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/27 15:46:15 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    print_memory(const void *addr, size_t size)
 	while (i < size)
 	{
 		col = -1;
-		while (++col < 16)
+		while (++col < 32)
 		{
 			if (i < size)
 			{
@@ -51,7 +51,6 @@ void    print_memory(const void *addr, size_t size)
 			i++;
 		}
 		col = -1;
-		ft_printf("je suis la valeur au saut de ligne%d", i);
 		ft_putchar('\n');
 	}
 }			

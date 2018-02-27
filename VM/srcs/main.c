@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/21 14:23:33 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/27 16:49:56 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include "op.h"
@@ -39,5 +39,8 @@ int main(int argc, char *argv[])
 	ft_bzero(&p, sizeof(t_param));
 	ft_bzero(&m, sizeof(t_memory));
 	ft_parse_options(argc, argv, &p, &m);
+	print_memory(m.memory , MEM_SIZE);
+	ft_printf("%d %d %d %d", p.nchamp[0].num_player, p.nchamp[1].num_player, p.nchamp[2].num_player, p.nchamp[3].num_player);
+
 	return 0;
 }

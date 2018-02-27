@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/27 14:23:58 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/27 17:39:42 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 void	op_live(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 {
-	unsigned char	op;
 	int				n_player;
 	t_chmp			*chmp;
 

@@ -6,7 +6,7 @@
 /*   By: allauren <allauren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:38:03 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/06 15:29:00 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/27 19:42:38 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int		ft_is_intvalid(char **str)
 				signe++;
 			else
 			{
+		ft_putendl("la2");
 				ft_strdel(&(*str));
 				return (0);
 			}
@@ -52,7 +53,7 @@ char	*ft_trim_int(const char *str)
 	i = signe;
 	while (str[i] == '0' && str[i + 1])
 		i++;
-	if ((len = ft_strlen(&str[i]) > 10) || (ft_atol(&str[i]) > 2147483647
+	if ((len = ft_strlen(&str[i]) > 10) || ((ft_atol(&str[i])) > 4294967295
 				&& !signe) || (ft_atol(&str[i]) > 2147483648 && signe))
 		return (NULL);
 	if (!(ret = ft_memalloc(sizeof(char*) * (len + signe + 1))))

@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/28 12:16:42 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/28 16:20:11 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 void	op_lld(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 {
-	int		ocp;
-	int		rg;
-	int		val;
+	unsigned int	ocp;
+	unsigned int	rg;
+	unsigned int	val;
 
 	(void)lst_proc;
 	(void)timer;
@@ -32,9 +32,9 @@ void	op_lld(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 		else
 			val = read_mem(mem, proc->pc + read_mem(mem, proc->pc + 2, 2), 4);
 		rg = read_mem(mem, proc->pc + 2 + (ARG(ocp, 3) == A_DIR ? 4 : 2), 1);
-		if (rg < REG_NUMBER && rg >= 0)
+		if (rg <= REG_NUMBER && rg > 0)
 		{
-			(proc->reg)[rg] = val;
+			(proc->reg)[rg - 1] = val;
 			(proc->carry) = !(val);
 		}
 	}
@@ -53,8 +53,8 @@ void	op_lfork(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 
 void	op_aff(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 {
-	int		ocp;
-	char	rg;
+	unsigned int	ocp;
+	char			rg;
 
 	(void)lst_process;
 	(void)timer;
@@ -62,8 +62,8 @@ void	op_aff(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 	if (ARG(ocp, 1) == A_REG && !ARG(ocp, 2) && !ARG(ocp, 3))
 	{
 		rg = read_mem(mem, proc->pc + 2, 1);
-		if (rg >= 0 && rg < mem->nb_champ)
-			ft_putchar((char)((proc->reg)[rg] % 256));
+		if (rg > 0 && rg <= mem->nb_champ)
+			ft_putchar((char)((proc->reg)[rg - 1] % 256));
 	}
 	(proc->pc) += 3;
 }

@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 12:02:38 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/22 16:30:45 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/28 15:59:05 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define A_DIR 2
 # define A_IND 3
 
-int			read_mem(t_memory *mem, int ind, int size);
+unsigned int	read_mem(t_memory *mem, int ind, int size);
+void			write_mem(t_memory *mem, unsigned int ind, unsigned int val);
 
 #endif

@@ -6,30 +6,30 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 16:45:56 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/24 18:05:14 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:59:08 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op_utils.h"
 #include "vm.h"
 
-int			read_mem(t_memory *mem, int ind, int size)
+unsigned int	read_mem(t_memory *mem, int ind, int size)
 {
-	int				res;
+	unsigned int	res;
 
 	res = 0;
 	while (size > 0)
 	{
-		res = (res << 8) + (int)((mem->memory)[ind % MEM_SIZE]);
+		res = (res << 8) + (unsigned int)((mem->memory)[ind % MEM_SIZE]);
 		(ind)++;
 		size--;
 	}
 	return (res);
 }
 
-void		write_mem(t_memory *mem, int ind, int val)
+void		write_mem(t_memory *mem, unsigned int ind, unsigned int val)
 {
-	int				i;
+	unsigned int	i;
 	unsigned char	b;
 
 	i = -1;

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 15:16:51 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/27 16:13:16 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/27 19:51:47 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	ft_set_optionparam(char *str, t_param *p, t_options *s)
 		p->opt.sp = 0;
 		if ((tmp = ft_trim_int(str)))
 		{
-			if (ft_atoi(tmp) >= 0)
-				p->nchamp[p->nb_champ].num_player = ft_atoi(tmp);
+			if (((unsigned int)ft_atol(tmp)) <= 4294967295)
+				p->nchamp[p->nb_champ].num_player = (unsigned int)ft_atol(tmp);
 			else
 				ft_perror("invalid param\n");
 			ft_strdel(&tmp);
 		}
 		else
-				ft_perror("invalid int\n");
+				ft_perror("invalid number\n");
 	}
 	(void)str;
 	(void)p;

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 04:05:03 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/27 16:48:46 by allauren         ###   ########.fr       */
+/*   Updated: 2018/02/27 16:54:41 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_sort_champ(t_param *p)
 	i = 0;
 	while (i < 3 && p->nchamp[i].fd)
 	{
-		ft_printf("coucou");
-		if (p->nchamp[i].num_player > p->nchamp[i + 1].num_player && p->nchamp[i + 1].fd)
+		if (p->nchamp[i].num_player >= p->nchamp[i + 1].num_player 
+				&& p->nchamp[i + 1].fd)
 		{
 			if (p->nchamp[i].num_player == p->nchamp[i + 1].num_player)
 				ft_perror("2 times the same number\n");
@@ -32,8 +32,8 @@ void	ft_sort_champ(t_param *p)
 		else
 			i++;
 	}
-
 }
+
 void	ft_set_memory(t_memory *m, t_param *p)
 {
 	int i;

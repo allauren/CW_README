@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/27 17:48:36 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/02/28 14:54:52 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	op_zjmp(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 {
-	unsigned int		dest;
+	int		dest;
 
 	(void)lst_proc;
 	(void)timer;
@@ -32,7 +32,13 @@ void	op_zjmp(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 
 void	op_ldi(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 {
-	return ;
+	int		ocp;
+	int		rg;
+	int		ind;
+
+	(void)lst_proc;
+	(void)timer;
+	ocp = read_mem(mem, (proc->pc) + 1, 1);
 }
 
 void	op_sti(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)

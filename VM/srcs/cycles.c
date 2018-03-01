@@ -6,13 +6,12 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/21 14:06:05 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/01 16:09:44 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "cycles.h"
-#include "process.h"
 
 t_timer			cycle_init(void)
 {

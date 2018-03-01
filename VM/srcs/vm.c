@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 13:58:12 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/28 16:42:49 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/01 16:08:18 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_bool			vm_run(t_memory *mem, t_proc **proc, t_timer *timer)
 				cursor->sleep = 0;
 			}
 		}
+		else
+			(cursor->pc)++;
 		cursor = cursor->next;
 	}
 	return (cycle_count(timer, proc));

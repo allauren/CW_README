@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_init.c                                         :+:      :+:    :+:   */
+/*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/11 04:05:03 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/03 08:19:58 by allauren         ###   ########.fr       */
+/*   Created: 2018/03/03 09:41:58 by allauren          #+#    #+#             */
+/*   Updated: 2018/03/03 09:42:27 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_sort_champ(t_param *p)
 	i = 0;
 	while (i < 3 && p->nchamp[i].fd)
 	{
-		if (p->nchamp[i].num_player >= p->nchamp[i + 1].num_player 
+		if (p->nchamp[i].num_player >= p->nchamp[i + 1].num_player
 				&& p->nchamp[i + 1].fd)
 		{
 			if (p->nchamp[i].num_player == p->nchamp[i + 1].num_player)
@@ -72,7 +72,7 @@ void	ft_isolatebuf(UC *buf, UC *cpy, int start, int end)
 	int		i;
 
 	i = 0;
-	while(start < end)
+	while (start < end)
 	{
 		cpy[i++] = buf[start];
 		start++;
@@ -87,16 +87,16 @@ void	ft_set_memory(t_memory *m, t_param *p)
 	ft_set_champ_num(p);
 	ft_sort_champ(p);
 	while (++i < p->nb_champ)
-		if(((p->ret = read(p->nchamp[i].fd, p->buf, SIZE_CHAMP + 1)) > 0))
+		if (((p->ret = read(p->nchamp[i].fd, p->buf, SIZE_CHAMP + 1)) > 0))
 		{
-		//	if (p->ret > SIZE_CHAMP)
-		//		ft_perror("too long champ\n");
+			if (p->ret > SIZE_CHAMP)
+				ft_perror("too long champ\n");
 			ft_check_magic(m, p, i);
 			ft_isolatebuf(p->buf, (UC*)p->nchamp[i].head.prog_name, 4, 132);
 			ft_check_prog_size(m, p, i);
-			ft_printf("%s %d\n", p->nchamp[i].head.prog_name, p->nchamp[i].head.prog_size);
-			print_memory(&p->buf[132], 8);
-			//ft_check_name(m, p, i);
+			ft_isolatebuf(p->buf, (UC*)p->nchamp[i].head.comment, 140, 2192);
+			if (p->nchamp[i].head.prog_size != p->ret - 2192)
+				ft_perror("incompatible header value and .cor length\n");
 			ft_fill_memory(m->memory, p->buf + 2192, \
 					(MEM_SIZE / p->nb_champ) * i, p->ret - 2192);
 			close(p->fd[i]);

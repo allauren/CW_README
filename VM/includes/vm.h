@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 10:37:13 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/03 07:51:08 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/03 09:42:42 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef char					t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define CHAMP_START			(2192)
 # define COREWAR_EXEC_MAGIC		0xea83f3
-# define COREWAR_MAGIC		0xea83f3
+# define COREWAR_MAGIC			0xea83f3
 # define B16					"0123456789abcdef"
 # define SIZE_CHAMP				(PROG_NAME_LENGTH + COMMENT_LENGTH \
 								+ 12 + CHAMP_MAX_SIZE)

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 15:16:51 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/02 19:30:14 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/03 09:48:16 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_set_fd(char *str, t_param *p, t_options *s)
 	if (p->nb_champ < 4)
 	{
 		p->opt.param = 0;
-		if((p->nchamp[p->nb_champ++].fd = open(str, O_RDONLY)) > 0)
+		if ((p->nchamp[p->nb_champ++].fd = open(str, O_RDONLY)) > 0)
 			return ;
 	}
 	ft_perror("invalid .cor\n");
@@ -57,7 +57,7 @@ void	ft_set_optionparam(char *str, t_param *p, t_options *s)
 			ft_strdel(&tmp);
 		}
 		else
-				ft_perror("invalid number\n");
+			ft_perror("invalid number\n");
 	}
 	(void)s;
 }
@@ -69,4 +69,3 @@ void	ft_error(char *str, t_param *p, t_options *s)
 	(void)s;
 	ft_perror("error param\n");
 }
-

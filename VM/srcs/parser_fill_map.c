@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_fill_memory.c                                  :+:      :+:    :+:   */
+/*   parser_fill_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/13 14:20:12 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/18 16:18:15 by allauren         ###   ########.fr       */
+/*   Created: 2018/03/03 09:47:48 by allauren          #+#    #+#             */
+/*   Updated: 2018/03/03 09:47:58 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 
-void	ft_fill_memory(unsigned char *memory, unsigned char *buf, int start, int stop)
+void	ft_fill_memory(unsigned char *memory, unsigned char *buf, \
+		int start, int stop)
 {
 	int		i;
 	int		z;

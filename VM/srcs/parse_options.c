@@ -6,21 +6,21 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:19:40 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/27 19:44:16 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/03 09:46:28 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 #include <stdlib.h>
 
-void	corewar_usage(void)
+void			corewar_usage(void)
 {
 	ft_putendl("usage: ./corewar [-dump nbr_cycles] \
 			<[-n number] champion.cor> ...");
 	exit(1);
 }
 
-int		ft_iscor(char *str)
+int				ft_iscor(char *str)
 {
 	int len;
 
@@ -34,27 +34,21 @@ static int		ft_select_option(char **argv, int argc, t_param *p)
 		return (p->opt.param == 1 ? 0 : 1);
 	if (p->opt.param)
 		return (2);
-	if(argv[argc][0] == '-')
+	if (argv[argc][0] == '-')
 		return (3);
 	if (argc < 1)
 		return (4);
 	return (0);
 }
 
-
-void		ft_parse_options(int argc,char **argv,t_param *p, t_memory *m)
+void			ft_parse_options(int argc, char **argv, t_param *p, t_memory *m)
 {
-	static void (*tab[4])(char*, t_param*, t_options*) =
-	{
-		ft_error,
-		ft_set_fd,
-		ft_set_optionparam,
-		ft_set_option
-	};
-	int i;
+	int				i;
+	static void		(*tab[4])(char*, t_param*, t_options*) = {ft_error,
+		ft_set_fd, ft_set_optionparam, ft_set_option};
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		tab[ft_select_option(argv, i, p)](argv[i], p, &p->opt);
 		i++;

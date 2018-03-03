@@ -6,13 +6,13 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 22:15:45 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/02 22:20:21 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/03 09:39:38 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 
-static void ft_put_int(char *str, int base, int i, long *jack)
+static void	ft_put_int(char *str, int base, int i, long *jack)
 {
 	*jack = *jack * base;
 	if (str[i] >= '0' && str[i] <= '9')

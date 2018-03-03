@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 10:37:13 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/18 17:49:04 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/03 07:51:08 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,21 @@ typedef char					t_arg_type;
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
+# define CHAMP_START			(2192)
 # define COREWAR_EXEC_MAGIC		0xea83f3
-# define SIZE_CHAMP				(PROG_NAME_LENGTH + COMMENT_LENGTH)
-
+# define COREWAR_MAGIC		0xea83f3
+# define B16					"0123456789abcdef"
+# define SIZE_CHAMP				(PROG_NAME_LENGTH + COMMENT_LENGTH \
+								+ 12 + CHAMP_MAX_SIZE)
+typedef unsigned char UC;
 typedef struct					s_header
 {
-	unsigned int		magic;
-	char				prog_name[PROG_NAME_LENGTH + 1];
-	unsigned int		prog_size;
-	char				comment[COMMENT_LENGTH + 1];
+	unsigned int		magic; // 4 octets qui permet de dire que c est un .cor si = CW exec_magic
+	char				prog_name[PROG_NAME_LENGTH + 1]; // 128
+	unsigned int		prog_size; // 8 octets
+	char				comment[COMMENT_LENGTH + 1]; // 2048 
 }								t_header;
-
+/*
+ * le programme doit lire en big endian 
+ * */
 #endif

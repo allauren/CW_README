@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 09:41:58 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/03 09:42:27 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/03 09:59:16 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,7 @@ void	ft_set_memory(t_memory *m, t_param *p)
 		}
 		else
 			ft_perror("read fail\n");
+	i = -1;
+	while (++i < 4)
+		m->chp[i] = p->nchamp[i];
 }

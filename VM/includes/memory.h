@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/03 09:42:40 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/03 09:59:17 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct			s_memory
 {
 	UC					memory[MEM_SIZE];
 	char				memoryp[MEM_SIZE * 4];
-	char					magic[9];
-	char					size[17];
+	char				magic[9];
+	char				size[17];
 	t_chmp				chp[4];
 	int					nb_champ;
 }						t_memory;

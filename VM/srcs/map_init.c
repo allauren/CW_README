@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 09:41:58 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/03 09:59:16 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/04 16:31:16 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_set_memory(t_memory *m, t_param *p)
 	while (++i < p->nb_champ)
 		if (((p->ret = read(p->nchamp[i].fd, p->buf, SIZE_CHAMP + 1)) > 0))
 		{
-			if (p->ret > SIZE_CHAMP)
+			if (p->ret > SIZE_CHAMP || p->ret < 2193)
 				ft_perror("too long champ\n");
 			ft_check_magic(m, p, i);
 			ft_isolatebuf(p->buf, (UC*)p->nchamp[i].head.prog_name, 4, 132);

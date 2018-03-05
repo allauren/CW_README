@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/05 16:52:06 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/05 16:53:51 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ void	op_sti(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 			&& ARG(ocp, 3))
 	{
 		rg = read_mem(mem, proc->pc + offset, 1);
+		val = 0;
 		if (rg > 0 && rg <= REG_NUMBER)
 			val = (proc->reg)[rg - 1];
-		else
-			val = 0;
 		ind = ind_sum(ocp, mem, proc);
 		write_mem(mem, proc->pc + (ind % IDX_MOD), val);
 	}

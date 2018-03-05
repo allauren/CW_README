@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/03 09:59:17 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 16:57:51 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,30 +53,30 @@ typedef struct			s_param
 	int				fd[4];
 	int				ret;
 	int				nb_champ;
-	UC	buf[SIZE_CHAMP + 1];
+	UC				buf[SIZE_CHAMP + 1];
 	int				test;
 	int				param;
 	t_options		opt;
 }						t_param;
-typedef struct		s_atoi
+typedef struct			s_atoi
 {
 	long	i;
 	long	jack;
-	int	neg;
-	int	j;
-	int	fin;
-}					t_atoi;
+	int		neg;
+	int		j;
+	int		fin;
+}						t_atoi;
 
 /*
- ** Utils to display
- */
+** Utils to display
+*/
 void					ft_fill_memory(UC *me,
 		UC *b, int strt, int stop);
 int						ft_atoi_base(const char *l, int base);
 void					print_memory(const void *addr, size_t size);
 /*
- ** Parsing functions
- */
+** Parsing functions
+*/
 void					ft_parse_options(int argc,
 		char **argv, t_param *p, t_memory *m);
 void					ft_set_fd(char *str, t_param *p, t_options *s);
@@ -87,10 +87,10 @@ void					ft_set_memory(t_memory *m, t_param *p);
 void					ft_isactive(int i, int *j, int value);
 void					corewar_usage(void);
 /*
- ** map init functions
- */
-void	ft_isolatebuf(UC *buf, UC *cpy, int start, int end);
-void	ft_check_magic(t_memory *m, t_param *p, int i);
-void	ft_check_prog_size(t_memory *m, t_param *p, int i);
+** map init functions
+*/
+void					ft_isolatebuf(UC *buf, UC *cpy, int start, int end);
+void					ft_check_magic(t_memory *m, t_param *p, int i);
+void					ft_check_prog_size(t_memory *m, t_param *p, int i);
 
 #endif

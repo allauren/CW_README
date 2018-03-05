@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 10:37:13 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/05 15:44:01 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/05 17:03:58 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,23 @@ typedef char					t_arg_type;
 # define COREWAR_EXEC_MAGIC		0xea83f3
 # define COREWAR_MAGIC			0xea83f3
 # define B16					"0123456789abcdef"
-# define SIZE_CHAMP				(PROG_NAME_LENGTH + COMMENT_LENGTH \
-								+ 12 + CHAMP_MAX_SIZE)
-typedef unsigned char UC;
+# define LENGTH					PROG_NAME_LENGTH + COMMENT_LENGTH
+# define SIZE_CHAMP				(LENGTH + 12 + CHAMP_MAX_SIZE)
+
+typedef unsigned char			t_uc;
+
+/*
+** magic : 4 octets qui permet de dire que c est un .cor si = CW exec_magic
+** prog_name : 128
+** prog_size : 8 octets
+** comment : 2048
+*/
 typedef struct					s_header
 {
-	unsigned int		magic; // 4 octets qui permet de dire que c est un .cor si = CW exec_magic
-	char				prog_name[PROG_NAME_LENGTH + 1]; // 128
-	unsigned int		prog_size; // 8 octets
-	char				comment[COMMENT_LENGTH + 1]; // 2048 
+	unsigned int		magic;
+	char				prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int		prog_size;
+	char				comment[COMMENT_LENGTH + 1];
 }								t_header;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/05 13:11:53 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/05 16:52:06 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,60 @@ void	op_zjmp(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 
 void	op_ldi(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 {
-	int		ocp;
-	int		rg;
-	int		ind;
-	int		val;
+	unsigned int		ocp;
+	unsigned int		rg;
+	unsigned int		ind;
+	unsigned int		val;
+	unsigned int		offset;
 
 	(void)lst_proc;
 	(void)timer;
 	ocp = read_mem(mem, (proc->pc) + 1, 1);
+	offset = 2 + ARG(ocp, 3) == A_REG ? 1 : 2;
+	offset += ARG(ocp, 2) == A_REG ? 1 : 2;
 	if (ARG(ocp, 1) == A_REG && ARG(ocp, 2) && ARG(ocp, 2) != A_IND
 			&& ARG(ocp, 3))
 	{
-		return ;
+		ind = ind_sum(ocp, mem, proc);
+		val = read_mem(mem, proc->pc + (ind % IDX_MOD), 4);
+		rg = read_mem(mem, proc->pc + offset, 1);
+		if (rg > 0 && rg <= REG_NUMBER)
+			(proc->reg)[rg - 1] = val;
 	}
-	(proc->pc) = !val;
+	else
+		val = 1;
+	(proc->carry) = !val;
+	(proc->pc) += offset + 1;
 }
 
 void	op_sti(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 {
-	return ;
+	unsigned int		ocp;
+	unsigned int		rg;
+	unsigned int		ind;
+	unsigned int		val;
+	unsigned int		offset;
+
+	(void)lst_proc;
+	(void)timer;
+	ocp = read_mem(mem, (proc->pc) + 1, 1);
+	offset = 2 + ARG(ocp, 3) == A_REG ? 1 : 2;
+	offset += ARG(ocp, 2) == A_REG ? 1 : 2;
+	if (ARG(ocp, 1) == A_REG && ARG(ocp, 2) && ARG(ocp, 2) != A_IND
+			&& ARG(ocp, 3))
+	{
+		rg = read_mem(mem, proc->pc + offset, 1);
+		if (rg > 0 && rg <= REG_NUMBER)
+			val = (proc->reg)[rg - 1];
+		else
+			val = 0;
+		ind = ind_sum(ocp, mem, proc);
+		write_mem(mem, proc->pc + (ind % IDX_MOD), val);
+	}
+	else
+		val = 1;
+	(proc->carry) = !val;
+	(proc->pc) += offset + 1;
 }
 
 void	op_fork(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)

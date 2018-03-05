@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 10:37:13 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/03 09:42:42 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:44:01 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,5 @@ typedef struct					s_header
 	unsigned int		prog_size; // 8 octets
 	char				comment[COMMENT_LENGTH + 1]; // 2048 
 }								t_header;
-/*
- * le programme doit lire en big endian 
- * */
+
 #endif

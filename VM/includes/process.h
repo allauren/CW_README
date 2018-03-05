@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:34:14 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/01 16:51:24 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/05 12:07:04 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PROCESS_H
 # include "libft_adv.h"
 # include "vm.h"
+# include "memory.h"
 
 typedef struct		s_proc
 {
@@ -27,6 +28,7 @@ typedef struct		s_proc
 
 t_proc				*proc_new(unsigned int pc);
 t_proc				*proc_dup(t_proc *proc, unsigned int pc);
+void				ft_process(t_proc **c, t_memory *m, t_param *p);
 void				proc_add(t_proc **proc, t_proc *new_p);
 void				proc_kill(t_proc **proc);
 int					proc_alive(t_proc **proc);

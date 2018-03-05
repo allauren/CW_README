@@ -6,34 +6,36 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 18:03:20 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/27 15:46:15 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/03 09:42:23 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <unistd.h>
-#include "../includes/op.h"
-void    ft_printhex(int n)
+#include "op.h"
+
+void	ft_printhex(int n)
 {
 	int c;
 
-	if (n >=		 16)
+	if (n >= 16)
 		ft_printhex(n / 16);
-	c = n % 16 + (n % 16 < 10 ? '0' : 'a' -			10);
+	c = n % 16 + (n % 16 < 10 ? '0' : 'a' - 10);
 	ft_putchar(c);
 }
 
-void    ft_printchars(unsigned char c)
+void	ft_printchars(unsigned char c)
 {
 	ft_putchar((c > 31 && c < 127) ? c : '.');
 }
 
-void    print_memory(const void *addr, size_t size)
+void	print_memory(const void *addr, size_t size)
 {
-	unsigned char *t = (unsigned char *)addr;
-	size_t				  i = 0;
-	int            col;
+	size_t			i;
+	unsigned char	*t;
+	int				col;
 
+	t = (unsigned char *)addr;
+	i = 0;
 	while (i < size)
 	{
 		col = -1;
@@ -50,7 +52,5 @@ void    print_memory(const void *addr, size_t size)
 			ft_putchar(' ');
 			i++;
 		}
-		col = -1;
-		ft_putchar('\n');
 	}
-}			
+}

@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_sort_champ.c                                 :+:      :+:    :+:   */
+/*   process_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/16 18:03:25 by allauren          #+#    #+#             */
-/*   Updated: 2018/02/16 18:29:39 by allauren         ###   ########.fr       */
+/*   Created: 2018/02/28 15:19:42 by allauren          #+#    #+#             */
+/*   Updated: 2018/03/04 20:37:43 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		ft_sort_champ(t_param *p)
+#include "process.h"
+#include "memory.h"
+
+void		ft_process(t_proc **pc, t_memory *m, t_param *p)
 {
-	t_chmp	new[4];
+	t_proc	*tmp;
 	int		i;
 
 	i = 0;
-	while(i < p->nb_champ)
+	while(p->nchamp[i].fd)
 	{
-		new[i] = 
-	
+	if (!(tmp = ft_memalloc(sizeof(tmp))))
+		ft_perror("malloc error\n");
+		tmp->reg[0] = p->nchamp[i].num_player;
+		tmp->pc = (MEM_SIZE / p->nb_champ) * i++;
+	if (*pc)
+		tmp->next = *pc;
+	*pc = tmp;
 	}
-
 }

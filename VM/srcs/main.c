@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/01 16:13:15 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/05 12:49:01 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 #include "memory.h"
 #include "process.h"
 #include "cycles.h"
-
-void	ft_print_memory(unsigned char *memory, char *memoryp, int start, int size)
-{
-	int i;
-	int	j;
-
-	j = 0;
-	i = 0 ;
-	while(++i < size + 1)
-	{
-		memoryp[start++] = HEX[memory[i - 1] / 16];
-		memoryp[start++] = HEX[memory[i - 1] % 16];
-		memoryp[start++] = ' ';
-		if(!(i % 64) && i >= 64)
-			memoryp[start++] = '\n';
-	}
-}
 
 t_bool			vm_run(t_memory *mem, t_proc **proc, t_timer *timer)
 {
@@ -66,7 +49,9 @@ int main(int argc, char *argv[])
 	t_memory	m;
 	t_proc		*proc;
 	t_timer		t;
+	t_proc		*pc;
 
+	pc = NULL;
 	if (argc == 1)
 		corewar_usage();
 	ft_bzero(&p, sizeof(t_param));
@@ -75,7 +60,10 @@ int main(int argc, char *argv[])
 	print_memory(m.memory , MEM_SIZE);
 	ft_printf(" num player%u %u %u %u", p.nchamp[0].num_player, p.nchamp[1].num_player, p.nchamp[2].num_player, p.nchamp[3].num_player);
 	t = cycle_init();
+	ft_process(&pc, &m, &p);
+	ft_printf("registre 0 %d et PC %u\n %p et next %p", pc->reg[0], pc->pc, pc, pc->next);
 	while (vm_run(&m, &proc, &t))
 		ft_printf("cycle %d done\n", t.cycle);
-	return 0;
+	print_memory(m.memory, MEM_SIZE);
+	return (0);
 }

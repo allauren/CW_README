@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/05 17:31:12 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:47:33 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int main(int argc, char *argv[])
 {
 	t_param		p;
 	t_memory	m;
-	t_proc		*proc;
 	t_timer		t;
 	t_proc		*pc;
 
@@ -57,12 +56,18 @@ int main(int argc, char *argv[])
 	ft_bzero(&p, sizeof(t_param));
 	ft_bzero(&m, sizeof(t_memory));
 	ft_parse_options(argc, argv, &p, &m);
-	print_memory(m.memory , MEM_SIZE);
-	ft_printf(" num player%u %u %u %u", p.nchamp[0].num_player, p.nchamp[1].num_player, p.nchamp[2].num_player, p.nchamp[3].num_player);
+//	print_memory(m.memory , MEM_SIZE);
+//	ft_printf(" num player%u %u %u %u", p.nchamp[0].num_player, p.nchamp[1].num_player, p.nchamp[2].num_player, p.nchamp[3].num_player);
 	t = cycle_init();
 	ft_process(&pc, &m, &p);
-	ft_printf("registre 0 %d et PC %u\n %p et next %p", pc->reg[0], pc->pc, pc, pc->next);
-	while (vm_run(&m, &proc, &t))
+	ft_printf("registre 0 %d et PC %u\n %p et next %p\n", pc->reg[0], pc->pc, pc, pc->next);
+	t_proc *test = pc;
+	while(test)
+	{
+		ft_printf("%p test et next %p", test, test->next);
+		test = test->next;
+	}
+	while (vm_run(&m, &pc, &t))
 		ft_printf("cycle %d done\n", t.cycle);
 	print_memory(m.memory, MEM_SIZE);
 	return (0);

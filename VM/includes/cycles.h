@@ -6,13 +6,14 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 15:25:53 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/21 13:10:00 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/01 16:09:36 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CYCLES_H
 # define CYCLES_H
 # include "libft_adv.h"
+# include "process.h"
 
 typedef struct		s_timer
 {
@@ -23,6 +24,6 @@ typedef struct		s_timer
 }					t_timer;
 
 t_timer				cycle_init(void);
-t_bool				cycle_count(t_timer *timer);
+t_bool				cycle_count(t_timer *timer, t_proc **proc);
 
 #endif

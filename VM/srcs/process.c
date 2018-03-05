@@ -6,10 +6,11 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:56:59 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/15 16:18:11 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/01 16:53:23 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "process.h"
 
 t_proc				*proc_new(unsigned int pc)
@@ -71,7 +72,7 @@ int					proc_alive(t_proc **proc)
 			proc_kill(cursor);
 		else
 		{
-			lives += proc->lives;
+			lives += (*cursor)->lives;
 			(*cursor)->lives = 0;
 			cursor = &((*cursor)->next);
 		}

@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/05 02:44:54 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:26:34 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 
 void	op_live(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 {
-	unsigned int	n_player;
+	int				n_player;
 	t_chmp			*chmp;
 
 	(void)lst_proc;
 	(proc->lives)++;
-	n_player = read_mem(mem, proc->pc + 5, 4);
+	n_player = (signed)read_mem(mem, proc->pc + 5, 4);
 	if (n_player <= mem->nb_champ && n_player > 0)
 	{
-		chmp = (mem->chp)[n_player - 1];
+		chmp = &((mem->chp)[n_player - 1]);
 		chmp->last_live = timer->cycle;
 		ft_printf("Player %d (%s) is said to be alive\n", n_player, chmp->name);
 	}
@@ -40,7 +40,7 @@ void	op_ld(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 
 	(void)lst_proc;
 	(void)timer;
-	opc = read_mem(mem, proc->pc + 1, 1);
+	ocp = read_mem(mem, proc->pc + 1, 1);
 	if (!ARG(ocp, 1) && ARG(ocp, 2) == A_REG
 			&& (ARG(ocp, 3) == A_DIR || ARG(ocp, 3) == A_IND))
 	{
@@ -73,10 +73,10 @@ void	op_st(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 	{
 		val = read_mem(mem, proc->pc + 2, 1);
 		val = (val <= REG_NUMBER && val > 0) ? (proc->reg)[val - 1] : 0;
-		dest = read_mem(mem, proc->pc + 3, (ARG(opc, 2) == A_REG ? 1 : 2));
+		dest = read_mem(mem, proc->pc + 3, (ARG(ocp, 2) == A_REG ? 1 : 2));
 		if (ARG(ocp, 2) == A_REG && dest <= REG_NUMBER && dest > 0)
 			(proc->reg)[dest - 1] = val;
-		else if (ARG(opc, 2) == A_IND)
+		else if (ARG(ocp, 2) == A_IND)
 			write_mem(mem, proc->pc + (dest % IDX_MOD), val);
 		(proc->carry) = !(val);
 	}
@@ -93,9 +93,9 @@ void	op_add(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 	ocp = read_mem(mem, proc->pc + 1, 1);
 	if (ARG(ocp, 1) == A_REG && ARG(ocp, 2) == A_REG && ARG(ocp, 3) == A_REG)
 	{
-		rg[0] =  read_mem(mem, proc->pc + 2, 1);
-		rg[1] =  read_mem(mem, proc->pc + 3, 1);
-		rg[2] =  read_mem(mem, proc->pc + 4, 1);
+		rg[0] = read_mem(mem, proc->pc + 2, 1);
+		rg[1] = read_mem(mem, proc->pc + 3, 1);
+		rg[2] = read_mem(mem, proc->pc + 4, 1);
 		if (rg[0] > 0 && rg[1] > 0 && rg[2] > 0 && rg[0] <= REG_NUMBER
 				&& rg[1] <= REG_NUMBER && rg[2] <= REG_NUMBER)
 		{

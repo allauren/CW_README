@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 10:37:56 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/05 17:23:45 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:24:43 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ typedef struct	s_op
 {
 	char				*name;
 	int					nb_arg;
-	int					*args;
+	int					args[3];
 	unsigned char		opc;
-	int					sleep;
+	unsigned int		sleep;
 	char				*desc;
 	t_bool				carry;
 	t_bool				size_dir;

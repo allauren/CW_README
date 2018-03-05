@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 16:45:56 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/28 15:59:08 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/05 16:23:44 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ unsigned int	read_mem(t_memory *mem, int ind, int size)
 	return (res);
 }
 
-void		write_mem(t_memory *mem, unsigned int ind, unsigned int val)
+void			write_mem(t_memory *mem, unsigned int ind, unsigned int val)
 {
 	unsigned int	i;
 	unsigned char	b;
@@ -38,4 +38,30 @@ void		write_mem(t_memory *mem, unsigned int ind, unsigned int val)
 		b = (unsigned char)((val >> ((3 - i) * 16)) & 0xFF);
 		(mem->memory)[(ind + i) % MEM_SIZE] = b;
 	}
+}
+
+unsigned int	ind_sum(unsigned int ocp, t_memory *mem, t_proc *proc)
+{
+	unsigned int		rg;
+	unsigned int		ind;
+
+	if (ARG(ocp, 3) == A_REG)
+	{
+		rg = read_mem(mem, (proc->pc) + 2, 1);
+		ind = (rg > 0 && rg <= REG_NUMBER) ? (proc->reg)[rg - 1] : 0;
+	}
+	else
+		ind = read_mem(mem, (proc->pc) + 2, 2);
+	if (ARG(ocp, 3) == A_IND)
+		ind = read_mem(mem, ind, 4);
+	if (ARG(ocp, 2) == A_REG)
+	{
+		rg = read_mem(mem, proc->pc + 2
+				+ (ARG(ocp, 3) == A_REG ? 1 : 2), 1);
+		ind += (rg > 0 && rg <= REG_NUMBER) ? (proc->reg)[rg - 1] : 0;
+	}
+	else
+		ind += read_mem(mem, proc->pc + 2
+				+ (ARG(ocp, 3) == A_REG ? 1 : 2), 2);
+	return (ind);
 }

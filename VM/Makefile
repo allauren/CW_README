@@ -6,7 +6,7 @@
 #    By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:39:52 by gsmith            #+#    #+#              #
-#    Updated: 2018/02/21 17:11:27 by gsmith           ###   ########.fr        #
+#    Updated: 2018/03/01 16:14:56 by gsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,7 @@ CFLAGS = -Wall -Wextra -Werror -g3 $(INCL)
 SRCS = $(addprefix $(SRCS_PATH)/, \
 		main.c \
 		parse_options.c \
-		vm.c \
-		cycle.c \
+		cycles.c \
 		process.c \
 		op.c \
 		op_1.c \

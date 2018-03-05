@@ -6,13 +6,12 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/02/21 14:06:05 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/01 16:49:47 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "cycles.h"
-#include "process.h"
 
 t_timer			cycle_init(void)
 {
@@ -39,6 +38,6 @@ t_bool			cycle_count(t_timer *timer, t_proc **proc)
 		}
 		timer->next_check += timer->to_die;
 	}
-	vm->cycle += 1;
+	timer->cycle += 1;
 	return (proc == NULL);
 }

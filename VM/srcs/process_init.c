@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 15:19:42 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/04 21:00:52 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:34:25 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void		ft_process(t_proc **pc, t_memory *m, t_param *p)
 	int		i;
 
 	i = 0;
+	(void)m;
 	while(p->nchamp[i].fd)
 	{
 	if (!(tmp = ft_memalloc(sizeof(tmp))))

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/05 16:57:51 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/05 17:33:54 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct			s_chmp
 
 typedef struct			s_memory
 {
-	UC					memory[MEM_SIZE];
+	t_uc					memory[MEM_SIZE];
 	char				memoryp[MEM_SIZE * 4];
 	char				magic[9];
 	char				size[17];
@@ -53,7 +53,7 @@ typedef struct			s_param
 	int				fd[4];
 	int				ret;
 	int				nb_champ;
-	UC				buf[SIZE_CHAMP + 1];
+	t_uc				buf[SIZE_CHAMP + 1];
 	int				test;
 	int				param;
 	t_options		opt;
@@ -70,8 +70,8 @@ typedef struct			s_atoi
 /*
 ** Utils to display
 */
-void					ft_fill_memory(UC *me,
-		UC *b, int strt, int stop);
+void					ft_fill_memory(t_uc *me,
+		t_uc *b, int strt, int stop);
 int						ft_atoi_base(const char *l, int base);
 void					print_memory(const void *addr, size_t size);
 /*
@@ -89,7 +89,7 @@ void					corewar_usage(void);
 /*
 ** map init functions
 */
-void					ft_isolatebuf(UC *buf, UC *cpy, int start, int end);
+void					ft_isolatebuf(t_uc *buf, t_uc *cpy, int start, int end);
 void					ft_check_magic(t_memory *m, t_param *p, int i);
 void					ft_check_prog_size(t_memory *m, t_param *p, int i);
 

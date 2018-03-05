@@ -6,13 +6,13 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 09:01:58 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/03 09:59:14 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:32:40 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 
-void	ft_isolatebufc(UC *buf, char *cpy, int start, int end)
+void	ft_isolatebufc(t_uc *buf, char *cpy, int start, int end)
 {
 	int		i;
 

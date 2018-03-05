@@ -6,13 +6,13 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 09:41:58 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/04 21:00:51 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:33:55 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 
-int		ft_ispresentchamp(t_param *p, int value)
+int		ft_ispresentchamp(t_param *p, unsigned int value)
 {
 	int i;
 
@@ -27,8 +27,8 @@ int		ft_ispresentchamp(t_param *p, int value)
 
 void	ft_set_champ_num(t_param *p)
 {
-	int		i;
-	int		value;
+	int				i;
+	unsigned int	value;
 
 	i = -1;
 	value = 0;
@@ -67,7 +67,7 @@ void	ft_sort_champ(t_param *p)
 	}
 }
 
-void	ft_isolatebuf(UC *buf, UC *cpy, int start, int end)
+void	ft_isolatebuf(t_uc *buf, t_uc *cpy, int start, int end)
 {
 	int		i;
 
@@ -92,10 +92,10 @@ void	ft_set_memory(t_memory *m, t_param *p)
 			if (p->ret > SIZE_CHAMP || p->ret < 2193)
 				ft_perror("too long champ\n");
 			ft_check_magic(m, p, i);
-			ft_isolatebuf(p->buf, (UC*)p->nchamp[i].head.prog_name, 4, 132);
+			ft_isolatebuf(p->buf, (t_uc*)p->nchamp[i].head.prog_name, 4, 132);
 			ft_check_prog_size(m, p, i);
-			ft_isolatebuf(p->buf, (UC*)p->nchamp[i].head.comment, 140, 2192);
-			if (p->nchamp[i].head.prog_size != p->ret - 2192)
+			ft_isolatebuf(p->buf, (t_uc*)p->nchamp[i].head.comment, 140, 2192);
+			if ((int)p->nchamp[i].head.prog_size != p->ret - 2192)
 				ft_perror("incompatible header value and .cor length\n");
 			ft_fill_memory(m->memory, p->buf + 2192, \
 					(MEM_SIZE / p->nb_champ) * i, p->ret - 2192);

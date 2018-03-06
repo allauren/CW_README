@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/06 14:31:29 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 14:58:05 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_bool			cycle_count(t_timer *timer, t_proc **proc)
 			timer->next_check += timer->to_die;
 		else
 		{
-			ft_putendl("no more time you, should free remaining process");
+			ft_putendl("no more time, you should free remaining process here");
 			return (FALSE);
 		}
 	}

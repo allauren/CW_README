@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 09:41:58 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/06 14:10:27 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 14:56:47 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,6 @@ int		ft_ispresentchamp(t_param *p, unsigned int value)
 			return (0);
 	}
 	return (1);
-}
-
-void	ft_set_champ_num(t_param *p)
-{
-	int				i;
-	unsigned int	value;
-
-	i = -1;
-	value = 0;
-	while (++i < 4 && p->nchamp[i].fd)
-	{
-		if (p->nchamp[i].fd && !p->nchamp[i].param)
-		{
-			while (!ft_ispresentchamp(p, value))
-				value++;
-			p->nchamp[i].num_player = value;
-			p->nchamp[i].param = 1;
-		}
-	}
 }
 
 void	ft_sort_champ(t_param *p)
@@ -67,6 +48,26 @@ void	ft_sort_champ(t_param *p)
 	}
 }
 
+void	ft_set_champ_num(t_param *p)
+{
+	int				i;
+	unsigned int	value;
+
+	i = -1;
+	value = 0;
+	while (++i < 4 && p->nchamp[i].fd)
+	{
+		if (p->nchamp[i].fd && !p->nchamp[i].param)
+		{
+			while (!ft_ispresentchamp(p, value))
+				value++;
+			p->nchamp[i].num_player = value;
+			p->nchamp[i].param = 1;
+		}
+	}
+	ft_sort_champ(p);
+}
+
 void	ft_isolatebuf(t_uc *buf, t_uc *cpy, int start, int end)
 {
 	int		i;
@@ -85,7 +86,6 @@ void	ft_set_memory(t_memory *m, t_param *p)
 
 	i = -1;
 	ft_set_champ_num(p);
-	ft_sort_champ(p);
 	while (++i < p->nb_champ)
 		if (((p->ret = read(p->nchamp[i].fd, p->buf, SIZE_CHAMP + 1)) > 0))
 		{

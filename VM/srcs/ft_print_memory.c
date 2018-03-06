@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 18:03:20 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/03 09:42:23 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/06 18:31:22 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ void	print_memory(const void *addr, size_t size)
 				ft_printhex(t[i]);
 			}
 			else
-				ft_putstr(" ");
+				ft_putchar(' ');
 			ft_putchar(' ');
 			i++;
 		}
+		ft_putchar('\n');
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/06 16:09:20 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 16:53:40 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	op_live(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 	int				i;
 	t_chmp			*chmp;
 
-	ft_putendl("hello there");
 	(void)lst_proc;
+	(void)timer;
 	n_player = read_mem(mem, proc->pc + 1, 4);
 	i = 0;
 	while (i < mem->nb_champ && n_player != (mem->chp)[i].num_player)
@@ -31,7 +31,7 @@ void	op_live(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 	{
 		(proc->lives)++;
 		chmp = &((mem->chp)[i]);
-		chmp->last_live = timer->cycle;
+		mem->last_live = chmp;
 		ft_printf("Player %d (%s) is said to be alive\n", n_player,
 				(chmp->head).prog_name);
 	}

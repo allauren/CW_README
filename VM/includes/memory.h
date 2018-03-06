@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/06 15:46:01 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 16:45:19 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct			s_chmp
 	int					fd;
 	t_bool				param;
 	unsigned int		num_player;
-	unsigned int		last_live;
 	t_header			head;
 }						t_chmp;
 
@@ -37,6 +36,7 @@ typedef struct			s_memory
 	char				size[17];
 	t_chmp				chp[4];
 	int					nb_champ;
+	t_chmp				*last_live;
 }						t_memory;
 
 typedef struct			s_options
@@ -57,6 +57,7 @@ typedef struct			s_param
 	int				param;
 	t_options		opt;
 }						t_param;
+
 typedef struct			s_atoi
 {
 	long	i;

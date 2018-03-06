@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 09:41:58 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/06 14:56:47 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 16:50:39 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	ft_set_memory(t_memory *m, t_param *p)
 			ft_fill_memory(m->memory, p->buf + 2192,
 					(MEM_SIZE / p->nb_champ) * i, p->ret - 2192);
 			close(p->fd[i]);
+			m->last_live = &(p->nchamp[i]);
 		}
 		else
 			ft_perror("read fail\n");

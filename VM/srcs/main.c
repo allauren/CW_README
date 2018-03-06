@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/06 13:13:31 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 16:53:03 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,13 @@ t_bool			vm_run(t_memory *mem, t_proc **proc, t_timer *timer)
 	return (cycle_count(timer, proc));
 }
 
-int main(int argc, char *argv[])
+void			vm_winner(t_chmp *player)
+{
+	ft_printf("Contestant %u, \"%s\", has won !\n",
+			player->num_player, player->head.prog_name);
+}
+
+int				main(int argc, char *argv[])
 {
 	t_param		p;
 	t_memory	m;
@@ -65,5 +71,6 @@ int main(int argc, char *argv[])
 		//continue ;
 		ft_printf("cycle %d done. proc->pc = %d\n", t.cycle, pc->pc);
 	print_memory(m.memory, MEM_SIZE);
+	vm_winner(m.last_live);
 	return (0);
 }

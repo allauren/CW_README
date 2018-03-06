@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 17:49:35 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/06 16:45:19 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 18:02:14 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct			s_param
 	int				fd[4];
 	int				ret;
 	int				nb_champ;
-	t_uc				buf[SIZE_CHAMP + 1];
+	t_uc			buf[SIZE_CHAMP + 1];
 	int				test;
 	int				param;
 	t_options		opt;

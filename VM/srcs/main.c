@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/05 17:47:33 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/06 13:13:31 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,10 @@ int main(int argc, char *argv[])
 //	ft_printf(" num player%u %u %u %u", p.nchamp[0].num_player, p.nchamp[1].num_player, p.nchamp[2].num_player, p.nchamp[3].num_player);
 	t = cycle_init();
 	ft_process(&pc, &m, &p);
-	ft_printf("registre 0 %d et PC %u\n %p et next %p\n", pc->reg[0], pc->pc, pc, pc->next);
-	t_proc *test = pc;
-	while(test)
-	{
-		ft_printf("%p test et next %p", test, test->next);
-		test = test->next;
-	}
+	ft_printf("registre 0 %d et PC %u\n %p et next %p\n\n", pc->reg[0], pc->pc, pc, pc->next);
 	while (vm_run(&m, &pc, &t))
-		ft_printf("cycle %d done\n", t.cycle);
+		//continue ;
+		ft_printf("cycle %d done. proc->pc = %d\n", t.cycle, pc->pc);
 	print_memory(m.memory, MEM_SIZE);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:15:44 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/05 16:52:05 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 14:00:47 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	op_lldi(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 	if (ARG(ocp, 1) == A_REG && ARG(ocp, 2) && ARG(ocp, 2) != A_IND
 			&& ARG(ocp, 3))
 	{
-		ind = ind_sum(ocp, mem, proc);
+		ind = ind_sum_ldi(ocp, mem, proc);
 		val = read_mem(mem, proc->pc + ind, 4);
 		rg = read_mem(mem, proc->pc + offset, 1);
 		if (rg > 0 && rg <= REG_NUMBER)
@@ -90,7 +90,7 @@ void	op_aff(t_memory *mem, t_proc *proc, t_proc **lst_proc, t_timer *timer)
 	if (ARG(ocp, 1) == A_REG && !ARG(ocp, 2) && !ARG(ocp, 3))
 	{
 		rg = read_mem(mem, proc->pc + 2, 1);
-		if (rg > 0 && rg <= mem->nb_champ)
+		if (rg > 0 && rg <= REG_NUMBER)
 			ft_putchar((char)((proc->reg)[rg - 1] % 256));
 	}
 	(proc->pc) += 3;

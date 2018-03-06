@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 13:08:29 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/01 16:49:47 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 14:31:29 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_timer			cycle_init(void)
 {
 	t_timer		res;
 
-	res.cycle = 1;
+	res.cycle = 0;
 	res.next_check = CYCLE_TO_DIE;
 	res.to_die = CYCLE_TO_DIE;
 	res.fail_check = 0;
@@ -28,16 +28,24 @@ t_bool			cycle_count(t_timer *timer, t_proc **proc)
 {
 	if (timer->cycle == timer->next_check)
 	{
+		ft_putendl("check");
 		if (proc_alive(proc) > NBR_LIVE && !(timer->fail_check = 0))
 			timer->to_die -= CYCLE_DELTA;
 		else
 		{
 			timer->fail_check += 1;
 			if (timer->fail_check == MAX_CHECKS && !(timer->fail_check = 0))
-				timer->to_die -= CYCLE_DELTA;
+				timer->to_die -=
+					CYCLE_DELTA > timer->to_die ? timer->to_die : CYCLE_DELTA;
 		}
-		timer->next_check += timer->to_die;
+		if (timer->to_die)
+			timer->next_check += timer->to_die;
+		else
+		{
+			ft_putendl("no more time you, should free remaining process");
+			return (FALSE);
+		}
 	}
 	timer->cycle += 1;
-	return (proc == NULL);
+	return (*proc != NULL);
 }

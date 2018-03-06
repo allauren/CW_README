@@ -6,7 +6,7 @@
 #    By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 16:39:52 by gsmith            #+#    #+#              #
-#    Updated: 2018/03/05 17:34:42 by allauren         ###   ########.fr        #
+#    Updated: 2018/03/06 11:49:28 by gsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,14 @@ CFLAGS = -Wall -Wextra -Werror -g3 $(INCL)
 SRCS = $(addprefix $(SRCS_PATH)/, \
 		main.c \
 		parse_options.c \
-		ft_atoi_base.c\
-		ft_print_memory.c\
-		map_init.c\
-		map_utils.c\
-		parse_utils.c\
-		parser_fill_map.c\
-		parser_pointer_functions.c\
-		process_init.c\
+		ft_atoi_base.c \
+		ft_print_memory.c \
+		map_init.c \
+		map_utils.c \
+		parse_utils.c \
+		parser_fill_map.c \
+		parser_pointer_functions.c \
+		process_init.c \
 		cycles.c \
 		process.c \
 		op.c \

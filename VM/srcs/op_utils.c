@@ -6,7 +6,7 @@
 /*   By: gsmith <gsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 16:45:56 by gsmith            #+#    #+#             */
-/*   Updated: 2018/03/05 16:23:44 by gsmith           ###   ########.fr       */
+/*   Updated: 2018/03/06 11:53:10 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			write_mem(t_memory *mem, unsigned int ind, unsigned int val)
 	}
 }
 
-unsigned int	ind_sum(unsigned int ocp, t_memory *mem, t_proc *proc)
+unsigned int	ind_sum_ldi(unsigned int ocp, t_memory *mem, t_proc *proc)
 {
 	unsigned int		rg;
 	unsigned int		ind;
@@ -63,5 +63,31 @@ unsigned int	ind_sum(unsigned int ocp, t_memory *mem, t_proc *proc)
 	else
 		ind += read_mem(mem, proc->pc + 2
 				+ (ARG(ocp, 3) == A_REG ? 1 : 2), 2);
+	return (ind);
+}
+
+unsigned int	ind_sum_sti(unsigned int ocp, t_memory *mem, t_proc *proc)
+{
+	unsigned int		rg;
+	unsigned int		ind;
+
+	if (ARG(ocp, 2) == A_REG)
+	{
+		rg = read_mem(mem, (proc->pc) + 3, 1);
+		ind = (rg > 0 && rg <= REG_NUMBER) ? (proc->reg)[rg - 1] : 0;
+	}
+	else
+		ind = read_mem(mem, (proc->pc) + 3, 2);
+	if (ARG(ocp, 2) == A_IND)
+		ind = read_mem(mem, ind, 4);
+	if (ARG(ocp, 1) == A_REG)
+	{
+		rg = read_mem(mem, proc->pc + 3
+				+ (ARG(ocp, 2) == A_REG ? 1 : 2), 1);
+		ind += (rg > 0 && rg <= REG_NUMBER) ? (proc->reg)[rg - 1] : 0;
+	}
+	else
+		ind += read_mem(mem, proc->pc + 3
+				+ (ARG(ocp, 2) == A_REG ? 1 : 2), 2);
 	return (ind);
 }

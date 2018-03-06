@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 09:41:58 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/05 17:33:55 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/06 14:10:27 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	ft_set_memory(t_memory *m, t_param *p)
 			ft_isolatebuf(p->buf, (t_uc*)p->nchamp[i].head.comment, 140, 2192);
 			if ((int)p->nchamp[i].head.prog_size != p->ret - 2192)
 				ft_perror("incompatible header value and .cor length\n");
-			ft_fill_memory(m->memory, p->buf + 2192, \
+			ft_fill_memory(m->memory, p->buf + 2192,
 					(MEM_SIZE / p->nb_champ) * i, p->ret - 2192);
 			close(p->fd[i]);
 		}
@@ -106,4 +106,5 @@ void	ft_set_memory(t_memory *m, t_param *p)
 	i = -1;
 	while (++i < 4)
 		m->chp[i] = p->nchamp[i];
+	m->nb_champ = p->nb_champ;
 }

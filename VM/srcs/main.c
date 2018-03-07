@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/05 18:10:56 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/07 19:24:35 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,13 @@ t_bool			vm_run(t_memory *mem, t_proc **proc, t_timer *timer)
 	return (1);
 }
 
-int main(int argc, char *argv[])
+void			vm_winner(t_chmp *player)
+{
+	ft_printf("Contestant %u, \"%s\", has won !\n",
+			player->num_player, player->head.prog_name);
+}
+
+int				main(int argc, char *argv[])
 {
 	t_param		p;
 	t_memory	m;
@@ -62,12 +68,11 @@ int main(int argc, char *argv[])
 //	ft_printf(" num player%u %u %u %u", p.nchamp[0].num_player, p.nchamp[1].num_player, p.nchamp[2].num_player, p.nchamp[3].num_player);
 	t = cycle_init();
 	ft_process(&pc, &m, &p);
-	ft_printf("registre 0 %d et PC %u\n%p et next %p\n", pc->reg[0], pc->pc, pc, pc->next);
-	int z = 0;
-	while (vm_run(&m, &pc, &t) && ++z < 100000)
-	{
-//	ft_printf("cycle %d done\n", t.cycle);
-//	print_memory(m.memory, MEM_SIZE);
-	}
+	ft_printf("registre 0 %d et PC %u\n %p et next %p\n\n", pc->reg[0], pc->pc, pc, pc->next);
+	while (vm_run(&m, &pc, &t))
+		//continue ;
+		ft_printf("cycle %d done. proc->pc = %d\n", t.cycle, pc->pc);
+	print_memory(m.memory, MEM_SIZE);
+	vm_winner(m.last_live);
 	return (0);
 }

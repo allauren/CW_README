@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:19:40 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/03 11:55:28 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/06 16:59:06 by gsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void			corewar_usage(void)
 {
-	ft_putendl("usage: ./corewar [-dump nbr_cycles] \
-			<[-n number] champion.cor> ...");
+	ft_printf("usage: %s %s...\n", "./corewar [-dump nbr_cycles]",
+			"<[-n number] champion.cor>");
 	exit(1);
 }
 

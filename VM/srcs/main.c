@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 13:04:36 by allauren          #+#    #+#             */
-/*   Updated: 2018/03/05 17:47:33 by allauren         ###   ########.fr       */
+/*   Updated: 2018/03/05 18:10:56 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_bool			vm_run(t_memory *mem, t_proc **proc, t_timer *timer)
 				cursor->sleep++;
 			else
 			{
+				//print_memory(mem->memory, MEM_SIZE);
+				ft_printf("PC de l op%u\n", cursor->pc % MEM_SIZE);
 				g_op_tab[i].fun(mem, cursor, proc, timer);
 				cursor->sleep = 0;
 			}
@@ -40,7 +42,7 @@ t_bool			vm_run(t_memory *mem, t_proc **proc, t_timer *timer)
 			(cursor->pc)++;
 		cursor = cursor->next;
 	}
-	return (cycle_count(timer, proc));
+	return (1);
 }
 
 int main(int argc, char *argv[])
@@ -60,15 +62,12 @@ int main(int argc, char *argv[])
 //	ft_printf(" num player%u %u %u %u", p.nchamp[0].num_player, p.nchamp[1].num_player, p.nchamp[2].num_player, p.nchamp[3].num_player);
 	t = cycle_init();
 	ft_process(&pc, &m, &p);
-	ft_printf("registre 0 %d et PC %u\n %p et next %p\n", pc->reg[0], pc->pc, pc, pc->next);
-	t_proc *test = pc;
-	while(test)
+	ft_printf("registre 0 %d et PC %u\n%p et next %p\n", pc->reg[0], pc->pc, pc, pc->next);
+	int z = 0;
+	while (vm_run(&m, &pc, &t) && ++z < 100000)
 	{
-		ft_printf("%p test et next %p", test, test->next);
-		test = test->next;
+//	ft_printf("cycle %d done\n", t.cycle);
+//	print_memory(m.memory, MEM_SIZE);
 	}
-	while (vm_run(&m, &pc, &t))
-		ft_printf("cycle %d done\n", t.cycle);
-	print_memory(m.memory, MEM_SIZE);
 	return (0);
 }
